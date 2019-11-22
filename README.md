@@ -1,1 +1,3 @@
-"# phptravels-selenium-py" 
+**Automated phptravels.net tests**
+
+Selenium with Python project

@@ -1,13 +1,14 @@
 import allure
 import pytest
 from allure_commons.types import AttachmentType
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
+
+
+from utils.driver_factory import DriverFactory
 
 
 @pytest.fixture()
 def setup(request):
-    driver = webdriver.Chrome(ChromeDriverManager().install())
+    driver = DriverFactory.get_driver("chrome")
     driver.implicitly_wait(10)
     request.cls.driver = driver
     before_failed = request.session.testsfailed
