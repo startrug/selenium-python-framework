@@ -16,3 +16,15 @@ class HeaderNavLocators:
     contact_us_link = (By.LINK_TEXT, "Contact Us")
     terms_and_conditions_link = (By.LINK_TEXT, "Company")
     privacy_policy_link = (By.LINK_TEXT, "Privacy Policy")
+
+
+class SearchFormLocators:
+    destination_inactive = (By.XPATH, "//span[text()='Search by Hotel or City Name')]")
+    destination_input = (By.XPATH, "//div[@id='select2-drop']//input[@class='select2-input']")
+    checkin_input = (By.XPATH, "//input[@id='checkin']")
+    checkout_input = (By.XPATH, "//input[@id='checkout']")
+    adults_plus = (By.XPATH, "//div[contains(@class,'col o2')]//button[contains(@class,'btn btn-white bootstrap-touchspin-up')]")
+    adults_minus = (By.XPATH, "//div[contains(@class,'col o2')]//button[contains(@class,'btn btn-white bootstrap-touchspin-down')]")
+    kids_plus = (By.XPATH, "//div[contains(@class,'col 01')]//button[contains(@class,'btn btn-white bootstrap-touchspin-up')]")
+    kids_minus = (By.XPATH, "//div[contains(@class,'col 01')]//button[contains(@class,'btn btn-white bootstrap-touchspin-down')]")
+    search_btn = (By.XPATH, "//div[@class='col-md-2 col-xs-12 o1']//button[@class='btn btn-primary btn-block'][contains(text(),'Search')]")
