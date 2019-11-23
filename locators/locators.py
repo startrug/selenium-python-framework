@@ -23,8 +23,21 @@ class SearchFormLocators:
     destination_input = (By.XPATH, "//div[@id='select2-drop']//input[@class='select2-input']")
     checkin_input = (By.XPATH, "//input[@id='checkin']")
     checkout_input = (By.XPATH, "//input[@id='checkout']")
-    adults_plus = (By.XPATH, "//div[contains(@class,'col o2')]//button[contains(@class,'btn btn-white bootstrap-touchspin-up')]")
-    adults_minus = (By.XPATH, "//div[contains(@class,'col o2')]//button[contains(@class,'btn btn-white bootstrap-touchspin-down')]")
-    kids_plus = (By.XPATH, "//div[contains(@class,'col 01')]//button[contains(@class,'btn btn-white bootstrap-touchspin-up')]")
-    kids_minus = (By.XPATH, "//div[contains(@class,'col 01')]//button[contains(@class,'btn btn-white bootstrap-touchspin-down')]")
-    search_btn = (By.XPATH, "//div[@class='col-md-2 col-xs-12 o1']//button[@class='btn btn-primary btn-block'][contains(text(),'Search')]")
+    adults_plus = (
+    By.XPATH, "//div[contains(@class,'col o2')]//button[contains(@class,'btn btn-white bootstrap-touchspin-up')]")
+    adults_minus = (
+    By.XPATH, "//div[contains(@class,'col o2')]//button[contains(@class,'btn btn-white bootstrap-touchspin-down')]")
+    kids_plus = (
+    By.XPATH, "//div[contains(@class,'col 01')]//button[contains(@class,'btn btn-white bootstrap-touchspin-up')]")
+    kids_minus = (
+    By.XPATH, "//div[contains(@class,'col 01')]//button[contains(@class,'btn btn-white bootstrap-touchspin-down')]")
+    search_btn = (By.XPATH,
+                  "//div[@class='col-md-2 col-xs-12 o1']//button[@class='btn btn-primary btn-block'][contains(text(),'Search')]")
+
+
+class SearchTabsLocators:
+    hotels_tab = (By.XPATH, "//a[@data-name='hotels']")
+    flights_tab = (By.XPATH, "//a[@data-name='flights']")
+    tours_tab = (By.XPATH, "//a[@data-name='tours']")
+    transfer_tab = (By.XPATH, "//a[@data-name='transfer']")
+    visa_tab = (By.XPATH, "//a[@data-name='visa']")
