@@ -22,11 +22,11 @@ class SearchForm:
 
     def set_adults_number(self, num):
         adults_input = self.driver.find_element(*SearchFormLocators.adults_input_value)
-        adults_input_val = int(adults_input.get_attribute("readonly value"))
+        adults_input_val = int(adults_input.get_attribute("value"))
         add_btn = self.driver.find_element(*SearchFormLocators.adults_add)
         subtract_btn = self.driver.find_element(*SearchFormLocators.adults_sub)
         if num < adults_input_val:
-            while int(adults_input_val) > num:
+            while adults_input_val > num:
                 subtract_btn.click()
                 adults_input_val -= 1
         elif num == adults_input_val:
@@ -35,6 +35,22 @@ class SearchForm:
             while adults_input_val < num:
                 add_btn.click()
                 adults_input_val += 1
+
+    def set_kids_number(self, num):
+        kids_input = self.driver.find_element(*SearchFormLocators.kids_input_value)
+        kids_input_val = int(kids_input.get_attribute("value"))
+        add_btn = self.driver.find_element(*SearchFormLocators.kids_add)
+        subtract_btn = self.driver.find_element(*SearchFormLocators.kids_sub)
+        if num < kids_input_val:
+            while kids_input_val > num:
+                subtract_btn.click()
+                kids_input_val -= 1
+        elif num == kids_input_val:
+            pass
+        else:
+            while kids_input_val < num:
+                add_btn.click()
+                kids_input_val += 1
 
     def search_perform(self):
         self.driver.find_element(*SearchFormLocators.search_btn).click()

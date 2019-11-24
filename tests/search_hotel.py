@@ -14,5 +14,6 @@ class TestHotelSearch:
         search_hotel.open_page()
         search_hotel.set_destination("Warsaw")
         search_hotel.set_date_range("29/12/2019", "03/01/2020")
-        search_hotel.set_adults_number(1)
+        search_hotel.set_adults_number(2)
+        search_hotel.set_kids_number(2)
         search_hotel.search_perform()
