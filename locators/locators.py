@@ -24,16 +24,11 @@ class SearchFormLocators:
     search_match = (By.XPATH, "//span[@class='select2-match']")
     checkin_input = (By.XPATH, "//input[@id='checkin']")
     checkout_input = (By.XPATH, "//input[@id='checkout']")
-    adults_plus = (
-    By.XPATH, "//div[contains(@class,'col o2')]//button[contains(@class,'btn btn-white bootstrap-touchspin-up')]")
-    adults_minus = (
-    By.XPATH, "//div[contains(@class,'col o2')]//button[contains(@class,'btn btn-white bootstrap-touchspin-down')]")
-    kids_plus = (
-    By.XPATH, "//div[contains(@class,'col 01')]//button[contains(@class,'btn btn-white bootstrap-touchspin-up')]")
-    kids_minus = (
-    By.XPATH, "//div[contains(@class,'col 01')]//button[contains(@class,'btn btn-white bootstrap-touchspin-down')]")
-    search_btn = (By.XPATH,
-                  "//div[@class='col-md-2 col-xs-12 o1']//button[@class='btn btn-primary btn-block'][contains(text(),'Search')]")
+    adults_add = (By.XPATH, "//div[@class,'col o2']//button[contains(@class,'btn btn-white bootstrap-touchspin-up')]")
+    adults_sub = (By.XPATH, "//div[@class='col o2']//button[contains(@class,'btn btn-white bootstrap-touchspin-down')]")
+    kids_add = (By.XPATH, "//div[@class='col 01']//button[contains(@class,'btn btn-white bootstrap-touchspin-up')]")
+    kids_minus = (By.XPATH, "//div[@class='col 01']//button[contains(@class,'btn btn-white bootstrap-touchspin-down')]")
+    search_btn = (By.XPATH, "//div[@class='col-md-2 col-xs-12 o1']//button[@class='btn btn-primary btn-block']")
 
 
 class SearchTabsLocators:
