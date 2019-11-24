@@ -6,7 +6,7 @@ from pages.login_page import LogInPage
 
 
 @pytest.mark.usefixtures("setup")
-class TestLogInPassed:
+class TestLogIn:
 
     @allure.title("Login with valid data test")
     @allure.description("This is test of login with valid data")
