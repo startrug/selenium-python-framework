@@ -12,9 +12,12 @@ class SearchForm:
     def set_destination(self, destination):
         self.driver.find_element(*SearchFormLocators.destination_inactive).click()
         self.driver.find_element(*SearchFormLocators.destination_input).send_keys(destination)
+        self.driver.find_element(*SearchFormLocators.search_match).click()
 
     def set_date_range(self, checkin, checkout):
+        self.driver.find_element(*SearchFormLocators.checkin_input).click()
         self.driver.find_element(*SearchFormLocators.checkin_input).send_keys(checkin)
+        self.driver.find_element(*SearchFormLocators.checkout_input).click()
         self.driver.find_element(*SearchFormLocators.checkout_input).send_keys(checkout)
 
     def search_perform(self):

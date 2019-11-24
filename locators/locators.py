@@ -19,8 +19,9 @@ class HeaderNavLocators:
 
 
 class SearchFormLocators:
-    destination_inactive = (By.XPATH, "//span[text()='Search by Hotel or City Name')]")
-    destination_input = (By.XPATH, "//div[@id='select2-drop']//input[@class='select2-input']")
+    destination_inactive = (By.XPATH, "//span[text()='Search by Hotel or City Name']")
+    destination_input = (By.XPATH, "//input[@class='select2-input select2-focused']")
+    search_match = (By.XPATH, "//span[@class='select2-match']")
     checkin_input = (By.XPATH, "//input[@id='checkin']")
     checkout_input = (By.XPATH, "//input[@id='checkout']")
     adults_plus = (
