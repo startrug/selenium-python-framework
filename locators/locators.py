@@ -1,10 +1,42 @@
 from selenium.webdriver.common.by import By
 
 
-class HeaderTopLocators:
-    user_account_menu = (By.XPATH, "//div[@class='dropdown dropdown-login dropdown-tab show']")
+class SetLanguageLocators:
+    lang_menu = (By.XPATH, "//a[@id='dropdownLangauge']")
+    russian_lang = (By.XPATH, "//a[@id='ru']")
+    farsi_lang = (By.XPATH, "//a[@id='fa']")
+    german_lang = (By.XPATH, "//a[@id='de']")
+    vietnamese_lang = (By.XPATH, "//a[@id='vi']")
+    french_lang = (By.XPATH, "//a[@id='fr']")
+    turkish_lang = (By.XPATH, "//a[@id='tr']")
+    arabic_lang = (By.XPATH, "//a[@id='ar']")
+    spanish_lang = (By.XPATH, "//a[@id='es']")
+    english_lang = (By.XPATH, "//a[@id='en']")
+
+
+class SetCurrencyLocators:
+    currency_menu = (By.CSS_SELECTOR, "#dropdownCurrency")
+    usd = (By.XPATH, "//a[text()='USD']")
+    gbp = (By.XPATH, "//a[text()='GBP']")
+    sar = (By.XPATH, "//a[text()='SAR']")
+    eur = (By.XPATH, "//a[text()='EUR']")
+    pkr = (By.XPATH, "//a[text()='PKR']")
+    kwd = (By.XPATH, "//a[text()='KWD']")
+    egp = (By.XPATH, "//a[text()='EGP']")
+    jpy = (By.XPATH, "//a[text()='JPY']")
+    inr = (By.XPATH, "//a[text()='INR']")
+    cny = (By.XPATH, "//a[text()='CNY']")
+    rub = (By.XPATH, "//a[text()='RUB']")
+    vietnam_dong = (By.XPATH, "//a[@class='dropdown-item text-center'][contains(text(),'Vietnam')]")
+
+
+class LogInLocators:
+    user_account_menu = (By.XPATH, "//div[@class='dropdown dropdown-login dropdown-tab']")
     login_link = (By.LINK_TEXT, "Login")
     sign_up_link = (By.XPATH, "Sign Up")
+    email_input = (By.XPATH, "//input[@placeholder='Email']")
+    password_input = (By.XPATH, "//input[@placeholder='Password']")
+    invalid_data_msg = (By.XPATH, "//div[@class='alert alert-danger']")
 
 
 class HeaderNavLocators:
@@ -39,3 +71,6 @@ class SearchTabsLocators:
     tours_tab = (By.XPATH, "//a[@data-name='tours']")
     transfer_tab = (By.XPATH, "//a[@data-name='transfer']")
     visa_tab = (By.XPATH, "//a[@data-name='visa']")
+
+class UserAccountLocators:
+    welcome_msg = (By.XPATH, "//h3[@class='text-align-left']")
