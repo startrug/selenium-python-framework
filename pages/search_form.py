@@ -20,5 +20,21 @@ class SearchForm:
         self.driver.find_element(*SearchFormLocators.checkout_input).click()
         self.driver.find_element(*SearchFormLocators.checkout_input).send_keys(checkout)
 
+    def set_adults_number(self, num):
+        if num < 2:
+            subtract_btn = self.driver.find_element(*SearchFormLocators.adults_sub)
+            adults_input_val = self.driver.find_element(*SearchFormLocators.adults_input_value)
+            while int(adults_input_val.get_attribute("readonly value")) > num:
+                subtract_btn.click()
+                adults_input_val -= 1
+        elif num == 2:
+            pass
+        else:
+            add_btn = self.driver.find_element(*SearchFormLocators.adults_add)
+            adults_input_val = self.driver.find_element(*SearchFormLocators.adults_input_value)
+            while int(adults_input_val.get_attribute("readonly value")) < num:
+                add_btn.click()
+                adults_input_val += 1
+
     def search_perform(self):
         self.driver.find_element(*SearchFormLocators.search_btn).click()

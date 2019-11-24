@@ -24,6 +24,8 @@ class SearchFormLocators:
     search_match = (By.XPATH, "//span[@class='select2-match']")
     checkin_input = (By.XPATH, "//input[@id='checkin']")
     checkout_input = (By.XPATH, "//input[@id='checkout']")
+    adults_input_value = (By.XPATH, "//div[@class='col o2']//input[@name='adults']")
+    kids_input_value = (By.XPATH, "//div[@class='col 01']//input[@name='children']")
     adults_add = (By.XPATH, "//div[@class,'col o2']//button[contains(@class,'btn btn-white bootstrap-touchspin-up')]")
     adults_sub = (By.XPATH, "//div[@class='col o2']//button[contains(@class,'btn btn-white bootstrap-touchspin-down')]")
     kids_add = (By.XPATH, "//div[@class='col 01']//button[contains(@class,'btn btn-white bootstrap-touchspin-up')]")
