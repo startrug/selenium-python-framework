@@ -1,6 +1,5 @@
 import pytest
 import allure
-
 from locators.locators import UserAccountLocators, LogInLocators
 from pages.login_page import LogInPage
 
@@ -10,7 +9,7 @@ class TestLogIn:
 
     @allure.title("Login with valid data test")
     @allure.description("This is test of login with valid data")
-    def test_login_passed(self, setup):
+    def test_login_passed(self):
         log_in_page = LogInPage(self.driver)
         log_in_page.open_page()
         log_in_page.open_login_page()
@@ -21,7 +20,7 @@ class TestLogIn:
 
     @allure.title("Login with invalid email test")
     @allure.description("This is test of login with invalid email")
-    def test_login_failed(self, setup):
+    def test_login_failed(self):
         log_in_page = LogInPage(self.driver)
         log_in_page.open_page()
         log_in_page.open_login_page()

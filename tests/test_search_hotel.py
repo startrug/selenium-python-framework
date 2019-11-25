@@ -1,6 +1,5 @@
 import pytest
 import allure
-
 from pages.search_form import SearchForm
 
 
@@ -9,7 +8,7 @@ class TestHotelSearch:
 
     @allure.title("Search hotel test")
     @allure.description("This is test of searching hotel in Warsaw")
-    def test_search_hotel(self, setup):
+    def test_search_hotel(self):
         search_hotel = SearchForm(self.driver)
         search_hotel.open_page()
         search_hotel.set_destination("Warsaw")
