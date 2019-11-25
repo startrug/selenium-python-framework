@@ -52,7 +52,7 @@ class HeaderNavLocators:
     privacy_policy_link = (By.LINK_TEXT, "Privacy Policy")
 
 
-class SearchFormLocators:
+class SearchHotelsFormLocators:
     destination_inactive = (By.XPATH, "//span[text()='Search by Hotel or City Name']")
     destination_input = (By.XPATH, "//input[@class='select2-input select2-focused']")
     search_match = (By.XPATH, "//span[@class='select2-match']")

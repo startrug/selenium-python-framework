@@ -2,7 +2,7 @@ import pytest
 import allure
 
 from locators.locators import SearchResultsLocators
-from pages.search_form import SearchForm
+from pages.search_hotels_form import SearchHotelsForm
 
 
 @pytest.mark.usefixtures("setup")
@@ -11,7 +11,7 @@ class TestHotelSearch:
     @allure.title("Search hotel test")
     @allure.description("This is test of searching hotel in Warsaw")
     def test_search_hotel(self):
-        search_hotel = SearchForm(self.driver)
+        search_hotel = SearchHotelsForm(self.driver)
         search_hotel.open_page()
         search_hotel.set_destination("Warsaw")
         search_hotel.set_date_range("29/12/2019", "03/01/2020")
