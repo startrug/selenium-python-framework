@@ -1,6 +1,6 @@
 import logging
 import allure
-from locators.locators import SearchFormLocators
+from locators.locators import SearchFormLocators, SearchResultsLocators
 
 
 class SearchForm:
@@ -65,7 +65,7 @@ class SearchForm:
                 add_btn.click()
                 kids_input_val += 1
 
-    @allure.step("Performing serach")
+    @allure.step("Performing search")
     def search_perform(self):
         self.logger.info("Performing search")
         self.driver.find_element(*SearchFormLocators.search_btn).click()

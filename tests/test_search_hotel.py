@@ -1,5 +1,7 @@
 import pytest
 import allure
+
+from locators.locators import SearchResultsLocators
 from pages.search_form import SearchForm
 
 
@@ -16,3 +18,6 @@ class TestHotelSearch:
         search_hotel.set_adults_number(2)
         search_hotel.set_kids_number(3)
         search_hotel.search_perform()
+
+        results_title = "Warsaw"
+        assert results_title in self.driver.find_element(*SearchResultsLocators.search_title).text

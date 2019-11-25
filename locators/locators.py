@@ -33,6 +33,8 @@ class SetCurrencyLocators:
 class LogInLocators:
     user_account_menu = (By.XPATH, "//div[@class='dropdown dropdown-login dropdown-tab']")
     login_link = (By.LINK_TEXT, "Login")
+    logout_link = (By.LINK_TEXT, "Logout")
+    account_link = (By.LINK_TEXT, "Account")
     sign_up_link = (By.XPATH, "Sign Up")
     email_input = (By.XPATH, "//input[@placeholder='Email']")
     password_input = (By.XPATH, "//input[@placeholder='Password']")
@@ -72,5 +74,15 @@ class SearchTabsLocators:
     transfer_tab = (By.XPATH, "//a[@data-name='transfer']")
     visa_tab = (By.XPATH, "//a[@data-name='visa']")
 
+
+class SearchResultsLocators:
+    search_title = (By.XPATH, "//span[@class='text-primary']")
+    change_search_btn = (By.XPATH, "//button[@data-target='#change-search']")
+
+
 class UserAccountLocators:
     welcome_msg = (By.XPATH, "//h3[@class='text-align-left']")
+    bookings_tab = (By.LINK_TEXT, "Bookings")
+    my_profile_tab = (By.LINK_TEXT, "My profile")
+    wishlist_tab = (By.LINK_TEXT, "Wishlist")
+    newsletter_tab = (By.LINK_TEXT, "Newsletter")
