@@ -68,8 +68,8 @@ class SearchHotelsFormLocators:
 
 
 class SearchFlightsFormLocators:
-    one_way_radio = (By.XPATH, "//input[@id='flightSearchRadio")
-    round_trip_radio = (By.XPATH, "//input[@id='flightSearchRadio-1']")
+    one_way_radio = (By.XPATH, "//label[text()='One Way']")
+    round_trip_radio = (By.XPATH, "//label[text()='Round Trip']")
     cabinclass_select = (By.XPATH, "//select[@name='cabinclass']")
     first_class = (By.XPATH, "//li[text()='First']")
     economy_class = (By.XPATH, "//li[text()='Economy']")
@@ -77,13 +77,16 @@ class SearchFlightsFormLocators:
     loc_from_inactive = (By.XPATH, "//div[@id='s2id_location_from']")
     loc_from_active = (By.XPATH, "//div[@id='select2-drop']//input[@class='select2-input']")
     flight_date_start = (By.XPATH, "//input[@id='FlightsDateStart']")
-    flight_date_end = (By.XPATH, "//input[@id='FlightsDateEnd']")
-    adults_add = (By.XPATH, "//div[@class='col o2']//button[contains(@class,'btn btn-white bootstrap-touchspin-up')]")
-    adults_sub = (By.XPATH, "//div[@class='col o2']//button[contains(@class,'btn btn-white bootstrap-touchspin-down')]")
-    kids_add = (By.XPATH, "//div[@class='col 01']//button[contains(@class,'btn btn-white bootstrap-touchspin-up')]")
-    kids_sub = (By.XPATH, "//div[@class='col 01']//button[contains(@class,'btn btn-white bootstrap-touchspin-down')]")
-    infants_add = (By.XPATH, "//div[@class='col 03']//button[contains(@class,'btn btn-white bootstrap-touchspin-up')]")
-    infants_sub = (By.XPATH, "//div[@class='col 03']//button[contains(@class,'btn btn-white bootstrap-touchspin-down')]")
+    adults_input_value = (By.XPATH, "//input[@name='fadults']")
+    adults_add = (By.XPATH, "(//button[@class='btn btn-white bootstrap-touchspin-up '])[3]")
+    adults_sub = (By.XPATH, "(//button[@class='btn btn-white bootstrap-touchspin-down '])[3]")
+    kids_input_value = (By.XPATH, "//input[@name='fchildren']")
+    kids_add = (By.XPATH, "(//button[@class='btn btn-white bootstrap-touchspin-up '])[4]")
+    kids_sub = (By.XPATH, "(//button[@class='btn btn-white bootstrap-touchspin-down '])[4]")
+    infants_input_value = (By.XPATH, "//input[@name='finfant']")
+    infants_add = (By.XPATH, "(//button[@class='btn btn-white bootstrap-touchspin-up '])[5]")
+    infants_sub = (By.XPATH, "(//button[@class='btn btn-white bootstrap-touchspin-down '])[5]")
+    search_btn = (By.XPATH, "//div[@class='col-xs-12 col-md-1']//button[@class='btn-primary btn btn-block']")
 
 
 class SearchTabsLocators:
