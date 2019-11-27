@@ -31,28 +31,22 @@ class SearchFlightsForm:
         self.logger.info("Selecting round trip")
         self.driver.find_element(*SearchFlightsFormLocators.round_trip_radio).click()
 
-    @allure.step("Setting cabin class")
-    def set_cabin_class(self, cabin_class):
-        self.logger.info("Setting economy cabin class")
-        select = Select(self.driver.find_element(*SearchFlightsFormLocators.cabinclass_select))
-        select.select_by_value(cabin_class)
-
     @allure.step("Setting economy cabin class")
     def set_economy_class(self):
         self.logger.info("Setting economy cabin class")
-        self.driver.find_element(*SearchFlightsFormLocators.cabinclass_select).click()
+        self.driver.find_element(*SearchFlightsFormLocators.cabinclass_dropdown).click()
         self.driver.find_element(*SearchFlightsFormLocators.economy_class).click()
 
     @allure.step("Setting first cabin class")
     def set_first_class(self):
         self.logger.info("Setting first cabin class")
-        self.driver.find_element(*SearchFlightsFormLocators.cabinclass_select).click()
+        self.driver.find_element(*SearchFlightsFormLocators.cabinclass_dropdown).click()
         self.driver.find_element(*SearchFlightsFormLocators.first_class).click()
 
     @allure.step("Setting business cabin class")
     def set_business_class(self):
         self.logger.info("Setting business cabin class")
-        self.driver.find_element(*SearchFlightsFormLocators.cabinclass_select).click()
+        self.driver.find_element(*SearchFlightsFormLocators.cabinclass_dropdown).click()
         self.driver.find_element(*SearchFlightsFormLocators.business_class).click()
 
     @allure.step("Setting number of adults to '{1}'")

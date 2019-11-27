@@ -70,7 +70,7 @@ class SearchHotelsFormLocators:
 class SearchFlightsFormLocators:
     one_way_radio = (By.XPATH, "//label[text()='One Way']")
     round_trip_radio = (By.XPATH, "//label[text()='Round Trip']")
-    cabinclass_select = (By.XPATH, "//select[@name='cabinclass']")
+    cabinclass_dropdown = (By.XPATH, "//div[@class='col-xs-4 col-md-2']")
     first_class = (By.XPATH, "//li[text()='First']")
     economy_class = (By.XPATH, "//li[text()='Economy']")
     business_class = (By.XPATH, "//li[text()='Business']")

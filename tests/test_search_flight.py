@@ -1,7 +1,6 @@
 import pytest
 import allure
 
-from locators.locators import SearchResultsLocators
 from pages.search_flights_form import SearchFlightsForm
 
 
@@ -15,7 +14,7 @@ class TestFlightSearch:
         search_flight.open_page()
         search_flight.open_flights_tab()
         search_flight.set_one_way()
-        search_flight.set_cabin_class("first")
+        search_flight.set_first_class()
         search_flight.set_adults_number(2)
         search_flight.set_kids_number(4)
         search_flight.set_infants_number(1)
