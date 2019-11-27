@@ -1,6 +1,6 @@
 import logging
 import allure
-from selenium.webdriver.support.select import Select
+from selenium.webdriver.common.by import By
 
 from locators.locators import SearchFlightsFormLocators, SearchTabsLocators
 
@@ -48,6 +48,18 @@ class SearchFlightsForm:
         self.logger.info("Setting business cabin class")
         self.driver.find_element(*SearchFlightsFormLocators.cabinclass_dropdown).click()
         self.driver.find_element(*SearchFlightsFormLocators.business_class).click()
+
+    # TODO
+    @allure.step("Setting start date - month")
+    def set_start_month(self, month):
+        self.logger.info("Setting start date - month")
+        self.driver.find_element(*SearchFlightsFormLocators.flight_date_start).click()
+        self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title).click()
+
+    # TODO
+    @allure.step("Setting end date")
+    def set_end_date(self):
+        self.logger.info("Setting end date")
 
     @allure.step("Setting number of adults to '{1}'")
     def set_adults_number(self, num):

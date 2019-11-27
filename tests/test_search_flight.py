@@ -15,6 +15,7 @@ class TestFlightSearch:
         search_flight.open_flights_tab()
         search_flight.set_one_way()
         search_flight.set_first_class()
+        search_flight.set_start_month()
         search_flight.set_adults_number(2)
         search_flight.set_kids_number(4)
         search_flight.set_infants_number(1)
