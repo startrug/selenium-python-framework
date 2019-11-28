@@ -60,6 +60,10 @@ class SearchFlightsForm:
     @allure.step("Setting end date")
     def set_end_date(self):
         self.logger.info("Setting end date")
+   
+# To powinno rozwiazac problem wielu metod dla podobnych XPATH-ow z roznym tekstem 
+#     def text_click(text)
+# 	    self.driver.find_element(By.XPATH, f"//div[text()='{text}').click()
 
     @allure.step("Setting number of adults to '{1}'")
     def set_adults_number(self, num):
