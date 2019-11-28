@@ -31,39 +31,39 @@ class SearchFlightsForm:
         self.logger.info("Selecting round trip")
         self.driver.find_element(*SearchFlightsFormLocators.round_trip_radio).click()
 
-    @allure.step("Setting economy cabin class")
-    def set_economy_class(self):
-        self.logger.info("Setting economy cabin class")
+    @allure.step("Setting cabin class")
+    def set_cabin_class(self, cabin_class):
+        self.logger.info("Setting cabin class")
         self.driver.find_element(*SearchFlightsFormLocators.cabinclass_dropdown).click()
-        self.driver.find_element(*SearchFlightsFormLocators.economy_class).click()
+        self.driver.find_element(By.XPATH, f"//li[text()='{cabin_class}']").click()
 
-    @allure.step("Setting first cabin class")
-    def set_first_class(self):
-        self.logger.info("Setting first cabin class")
-        self.driver.find_element(*SearchFlightsFormLocators.cabinclass_dropdown).click()
-        self.driver.find_element(*SearchFlightsFormLocators.first_class).click()
-
-    @allure.step("Setting business cabin class")
-    def set_business_class(self):
-        self.logger.info("Setting business cabin class")
-        self.driver.find_element(*SearchFlightsFormLocators.cabinclass_dropdown).click()
-        self.driver.find_element(*SearchFlightsFormLocators.business_class).click()
-
-    # TODO
     @allure.step("Setting start date - month")
     def set_start_month(self, month):
         self.logger.info("Setting start date - month")
         self.driver.find_element(*SearchFlightsFormLocators.flight_date_start).click()
         self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title).click()
+        self.driver.find_element(By.XPATH, f"//div[contains(@class,'cell-month')][contains(.,'{month}')]").click()
 
-    # TODO
-    @allure.step("Setting end date")
-    def set_end_date(self):
-        self.logger.info("Setting end date")
-   
-# To powinno rozwiazac problem wielu metod dla podobnych XPATH-ow z roznym tekstem 
-#     def text_click(text)
-# 	    self.driver.find_element(By.XPATH, f"//div[text()='{text}').click()
+    @allure.step("Setting start date - day")
+    def set_start_day(self, day):
+        self.logger.info("Setting start date - month")
+        days = self.driver.find_elements(By.XPATH, f"//div[contains(@class,'cell-day')][contains(.,'{day}')]")
+        for day in days:
+            if day.is_displayed():
+                day.click()
+                break
+
+    @allure.step("Setting end date - month")
+    def set_end_date(self, month):
+        self.logger.info("Setting end date - month")
+        self.driver.find_element(*SearchFlightsFormLocators.flight_date_end).click()
+        self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title).click()
+        self.driver.find_element(By.XPATH, f"//div[contains(@class,'cell-month')][contains(.,'{month}')]").click()
+
+    @allure.step("Setting end date - day")
+    def set_end_day(self, day):
+        self.logger.info("Setting end date - month")
+        self.driver.find_element(By.XPATH, f"//div[contains(@class,'cell-day')][contains(.,'{day}')]").click()
 
     @allure.step("Setting number of adults to '{1}'")
     def set_adults_number(self, num):
