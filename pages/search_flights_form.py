@@ -37,6 +37,20 @@ class SearchFlightsForm:
         self.driver.find_element(*SearchFlightsFormLocators.cabinclass_dropdown).click()
         self.driver.find_element(By.XPATH, f"//li[text()='{cabin_class}']").click()
 
+    @allure.step("Setting location from: '{1}'")
+    def set_loc_from(self, loc_from):
+        self.logger.info("Setting location from: {}".format(loc_from))
+        self.driver.find_element(*SearchFlightsFormLocators.loc_from_inactive).click()
+        self.driver.find_element(*SearchFlightsFormLocators.loc_input_active).send_keys(loc_from)
+        self.driver.find_element(By.XPATH, f"//div[@class='select2-result-label'][contains(.,'({loc_from})')]").click()
+
+    @allure.step("Setting location to: '{1}'")
+    def set_loc_to(self, loc_to):
+        self.logger.info("Setting location to: {}".format(loc_to))
+        self.driver.find_element(*SearchFlightsFormLocators.loc_to_inactive).click()
+        self.driver.find_element(*SearchFlightsFormLocators.loc_input_active).send_keys(loc_to)
+        self.driver.find_element(By.XPATH, f"//div[@class='select2-result-label'][contains(.,'({loc_to})')]").click()
+
     @allure.step("Setting start date - month")
     def set_start_month(self, month):
         self.logger.info("Setting start date - month")
@@ -46,7 +60,7 @@ class SearchFlightsForm:
 
     @allure.step("Setting start date - day")
     def set_start_day(self, day):
-        self.logger.info("Setting start date - month")
+        self.logger.info("Setting start date - day")
         days = self.driver.find_elements(By.XPATH, f"//div[contains(@class,'cell-day')][contains(.,'{day}')]")
         for day in days:
             if day.is_displayed():

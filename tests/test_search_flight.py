@@ -15,6 +15,8 @@ class TestFlightSearch:
         search_flight.open_flights_tab()
         search_flight.set_one_way()
         search_flight.set_cabin_class("First")  # Cabin class: Economy, First, Business
+        search_flight.set_loc_from("LUZ")
+        search_flight.set_loc_to("OSL")
         search_flight.set_start_month("Dec")  # month: Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
         search_flight.set_start_day("30")
         search_flight.set_adults_number(2)
