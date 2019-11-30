@@ -56,7 +56,7 @@ class SearchFlightsForm:
     def set_start_month(self, month):
         self.logger.info("Setting start date - month")
         self.driver.find_element(*SearchFlightsFormLocators.flight_date_start).click()
-        self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title).click()
+        self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title_start).click()
         self.driver.find_element(By.XPATH, f"//div[contains(@class,'cell-month')][contains(.,'{month}')]").click()
 
     @allure.step("Setting start date - day")
@@ -69,11 +69,11 @@ class SearchFlightsForm:
                 break
 
     @allure.step("Setting end date - month")
-    def set_end_date(self, month):
+    def set_end_month(self, month):
         self.logger.info("Setting end date - month")
         self.driver.find_element(*SearchFlightsFormLocators.flight_date_end).click()
-        self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title).click()
-        self.driver.find_element(By.XPATH, f"//div[contains(@class,'cell-month')][contains(.,'{month}')]").click()
+        self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title_end).click()
+        self.driver.find_element(By.XPATH, f"//div[contains(text(),'{month}')]").click()
 
     @allure.step("Setting end date - day")
     def set_end_day(self, day):
