@@ -1,5 +1,6 @@
 import logging
 import allure
+from allure_commons.types import AttachmentType
 from locators.locators import SearchHotelsFormLocators
 
 
@@ -69,3 +70,4 @@ class SearchHotelsForm:
     def search_perform(self):
         self.logger.info("Performing search")
         self.driver.find_element(*SearchHotelsFormLocators.search_btn).click()
+        allure.attach(self.driver.get_screenshot_as_png(), name="search_results", attachment_type=AttachmentType.PNG)

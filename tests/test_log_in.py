@@ -25,6 +25,7 @@ class TestLogIn:
     def test_login_failed(self):
         log_in_page = LogInPage(self.driver)
         log_in_page.open_page()
+        log_in_page.expand_account_menu()
         log_in_page.open_login_page()
         log_in_page.set_user_inputs("admin@phptravels.com", "demouser")
         error_msg = "Invalid Email or Password"
