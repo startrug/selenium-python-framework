@@ -11,8 +11,8 @@ class XlsxReader:
 
         for i in range(1, sheet.nrows):
             search_hotels_data = SearchHotelsData(sheet.cell(i, 0).value, sheet.cell(i, 1).value,
-                                                  sheet.cell(i, 2).value, sheet.cell(i, 3).value,
-                                                  sheet.cell(i, 4).value)
+                                                  sheet.cell(i, 2).value, int(sheet.cell(i, 3).value),
+                                                  int(sheet.cell(i, 4).value))
             data.append(search_hotels_data)
         return data
 

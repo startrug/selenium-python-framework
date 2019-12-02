@@ -68,6 +68,14 @@ class SearchFlightsForm:
                 day.click()
                 break
 
+    @allure.step("Setting end date - year")
+    def set_end_year(self, current_year, year):
+        self.logger.info("Setting end date - year")
+        self.driver.find_element(*SearchFlightsFormLocators.flight_date_end).click()
+        self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title_end).click()
+        self.driver.find_element(By.XPATH, f"//div[text()='{current_year}']")
+        self.driver.find_element(By.XPATH, f"//div[contains(text(),'{year}')]").click()
+
     @allure.step("Setting end date - month")
     def set_end_month(self, month):
         self.logger.info("Setting end date - month")
@@ -78,7 +86,11 @@ class SearchFlightsForm:
     @allure.step("Setting end date - day")
     def set_end_day(self, day):
         self.logger.info("Setting end date - month")
-        self.driver.find_element(By.XPATH, f"//div[contains(@class,'cell-day')][contains(.,'{day}')]").click()
+        days = self.driver.find_elements(By.XPATH, f"//div[contains(@class,'cell-day')][contains(.,'{day}')]")
+        for day in days:
+            if day.is_displayed():
+                day.click()
+                break
 
     @allure.step("Setting number of adults to '{1}'")
     def set_adults_number(self, num):
