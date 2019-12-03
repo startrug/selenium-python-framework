@@ -86,11 +86,19 @@ class SearchFlightsForm:
     # TODO
     @allure.step("Setting end date - year: '{1}'")
     def set_end_year(self, end_year):
-        global current_year
         self.logger.info("Setting end date - year: {}".format(end_year))
         self.driver.find_element(*SearchFlightsFormLocators.flight_date_end).click()
-        self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title_end).click()
-        self.driver.find_element(By.XPATH, f"//div[contains(text(),'{end_year}')]").click()
+        years = self.driver.find_elements(By.XPATH, "//div[@class='datepicker--nav-title']//i")
+        for year in years:
+            if year.is_displayed():
+                selected_year = year.text
+                print(selected_year)
+                break
+        if end_year != selected_year:
+            self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title_end).click()
+            self.driver.find_element(By.XPATH, f"//div[contains(text(),'{end_year}')]").click()
+        else:
+            pass
 
     @allure.step("Setting end date - month: '{1}'")
     def set_end_month(self, month):
