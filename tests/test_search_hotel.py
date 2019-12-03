@@ -25,7 +25,7 @@ class TestHotelSearch:
 
     @allure.title("Search hotel test 2")
     @allure.description("This is data driven test of searching hotels")
-    @pytest.mark.parametrize("data", XlsxReader.get_xlsx_data())
+    @pytest.mark.parametrize("data", XlsxReader.get_xlsx_hotels_data())
     def test_search_hotel_2(self, data):
         search_hotel = SearchHotelsForm(self.driver)
         search_hotel.open_page()
