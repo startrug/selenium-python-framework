@@ -67,6 +67,7 @@ class SearchFlightsForm:
             self.driver.find_element(By.XPATH, f"//div[contains(text(),'{start_year}')]").click()
         else:
             pass
+        return start_year
 
     @allure.step("Setting start date - month: '{1}'")
     def set_start_month(self, month):
@@ -82,24 +83,23 @@ class SearchFlightsForm:
                 day.click()
                 break
 
-    @allure.step("Setting end date - year")
-    def set_end_year(self, current_year, end_year):
-        self.logger.info("Setting end date - year")
+    # TODO
+    @allure.step("Setting end date - year: '{1}'")
+    def set_end_year(self, end_year):
+        global current_year
+        self.logger.info("Setting end date - year: {}".format(end_year))
         self.driver.find_element(*SearchFlightsFormLocators.flight_date_end).click()
         self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title_end).click()
-        self.driver.find_element(By.XPATH, f"//div[text()='{current_year}']")
         self.driver.find_element(By.XPATH, f"//div[contains(text(),'{end_year}')]").click()
 
-    @allure.step("Setting end date - month")
+    @allure.step("Setting end date - month: '{1}'")
     def set_end_month(self, month):
-        self.logger.info("Setting end date - month")
-        self.driver.find_element(*SearchFlightsFormLocators.flight_date_end).click()
-        self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title_end).click()
+        self.logger.info("Setting end date - month: {}".format(month))
         self.driver.find_element(By.XPATH, f"//div[contains(text(),'{month}')]").click()
 
-    @allure.step("Setting end date - day")
+    @allure.step("Setting end date - day: '{1}'")
     def set_end_day(self, day):
-        self.logger.info("Setting end date - month")
+        self.logger.info("Setting end date - day: {}".format(day))
         days = self.driver.find_elements(By.XPATH, f"//div[contains(@class,'cell-day')][contains(.,'{day}')]")
         for day in days:
             if day.is_displayed():

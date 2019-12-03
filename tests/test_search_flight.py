@@ -38,6 +38,8 @@ class TestFlightSearch:
         search_flight.set_start_year("2019", "2020")
         search_flight.set_start_month("Dec")  # month: Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
         search_flight.set_start_day("15")
+        search_flight.set_end_year("2020")
+        search_flight.set_end_month("Jan")
         search_flight.set_end_day("30")
         search_flight.set_adults_number(1)
         search_flight.set_kids_number(0)
