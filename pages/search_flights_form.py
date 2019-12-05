@@ -57,6 +57,37 @@ class SearchFlightsForm:
         self.logger.info("Setting start date - opening calendar")
         self.driver.find_element(*SearchFlightsFormLocators.flight_date_start).click()
 
+    @allure.step("Setting start date to '{1}'/'{2}'/'{3}'")
+    def set_start_date(self, year, month, day):
+        self.logger.info("Setting start date to {year}/{month}/{day}".format(year=year, month=month, day=day))
+        self.driver.find_element(*SearchFlightsFormLocators.flight_date_start).click()
+        years = self.driver.find_elements(By.XPATH, "//div[@class='datepicker--nav-title']//i")
+        for year in years:
+            if year.is_displayed():
+                current_year = year.text
+                print(current_year)
+                break
+        if current_year != year:
+            self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title_start).click()
+            self.driver.find_element(By.XPATH, f"//div[text()='{current_year}']").click()
+            self.driver.find_element(By.XPATH, f"//div[contains(text(),'{year}')]").click()
+        else:
+            pass
+        months = self.driver.find_elements(By.XPATH, "//div[@class='datepicker--nav-title']")
+        for month in months:
+            if month.is_displayed():
+                current_month = month.text
+                break
+        if month != current_month[0:3]:
+            self.driver.find_element(By.XPATH, f"//div[contains(@class,'cell-month')][contains(.,'{month}')]").click()
+        else:
+            pass
+        days = self.driver.find_elements(By.XPATH, f"//div[contains(@class,'cell-day')][contains(.,'{day}')]")
+        for day in days:
+            if day.is_displayed():
+                day.click()
+                break
+
     @allure.step("Setting start date - year: '{1}'")
     def set_start_year(self, current_year, start_year):
         self.logger.info("Setting start date - year: {}".format(start_year))
