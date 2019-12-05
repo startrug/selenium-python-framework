@@ -92,21 +92,37 @@ class SearchFlightsForm:
                 break
 
     # TODO
-    @allure.step("Setting end date - year: '{1}'")
-    def set_end_year(self, end_year):
-        self.logger.info("Setting end date - year: {}".format(end_year))
-        self.driver.find_element(*SearchFlightsFormLocators.flight_date_end).click()
+    def set_end_date(self, end_year, end_month, end_day):
+        self.logger.info(
+            f"Setting end date to {end_year}/{end_month}/{end_day}")
         years = self.driver.find_elements(By.XPATH, "//div[@class='datepicker--nav-title']//i")
         for year in years:
             if year.is_displayed():
-                selected_year = year.text
-                print(selected_year)
+                current_year = year.text
                 break
-        if end_year != selected_year:
+        if current_year != end_year:
+            print(current_year + " != " + end_year)
             self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title_end).click()
+            self.driver.find_element(By.XPATH, f"//div[text()='{current_year}']").click()
             self.driver.find_element(By.XPATH, f"//div[contains(text(),'{end_year}')]").click()
         else:
             pass
+        months = self.driver.find_elements(By.XPATH, "//div[@class='datepicker--nav-title']")
+        for month in months:
+            if month.is_displayed():
+                current_month = month.text
+                print(current_month)
+                break
+        if current_month[0:3] != end_month:
+            self.driver.find_element(By.XPATH, f"//div[contains(text(),'{current_month}')]").click()
+            self.driver.find_element(By.XPATH, f"//div[contains(@class,'cell-month')][contains(.,'{end_month}')]").click()
+        else:
+            pass
+        days = self.driver.find_elements(By.XPATH, f"//div[contains(@class,'cell-day')][contains(.,'{end_day}')]")
+        for day in days:
+            if day.is_displayed():
+                day.click()
+                break
 
     @allure.step("Setting end date - month: '{1}'")
     def set_end_month(self, month):
