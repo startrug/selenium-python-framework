@@ -52,11 +52,6 @@ class SearchFlightsForm:
         self.driver.find_element(*SearchFlightsFormLocators.loc_input_active).send_keys(loc_to)
         self.driver.find_element(By.XPATH, f"//div[@class='select2-result-label'][contains(.,'({loc_to})')]").click()
 
-    @allure.step("Setting start date - opening calendar")
-    def start_date_calendar(self):
-        self.logger.info("Setting start date - opening calendar")
-        self.driver.find_element(*SearchFlightsFormLocators.flight_date_start).click()
-
     @allure.step("Setting start date to '{1}'/'{2}'/'{3}'")
     def set_start_date(self, start_year, start_month, start_day):
         self.logger.info(
