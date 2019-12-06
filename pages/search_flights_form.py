@@ -109,25 +109,18 @@ class SearchFlightsForm:
                 print(current_month)
                 break
         if current_month[0:3] != end_month:
-            self.driver.find_element(By.XPATH, f"//div[contains(text(),'{current_month}')]").click()
-            self.driver.find_element(By.XPATH, f"//div[contains(@class,'cell-month')][contains(.,'{end_month}')]").click()
+            header_months = self.driver.find_elements(By.XPATH,
+                                                      f"(//div[@class='datepicker--nav-title'][contains(.,'{current_month}')])")
+            for header_month in header_months:
+                if header_month.is_displayed():
+                    header_month.click()
+                    print("header month is " + header_month)
+                    break
+            self.driver.find_element(By.XPATH,
+                                     f"//div[contains(@class,'cell-month')][contains(.,'{end_month}')]").click()
         else:
             pass
         days = self.driver.find_elements(By.XPATH, f"//div[contains(@class,'cell-day')][contains(.,'{end_day}')]")
-        for day in days:
-            if day.is_displayed():
-                day.click()
-                break
-
-    @allure.step("Setting end date - month: '{1}'")
-    def set_end_month(self, month):
-        self.logger.info("Setting end date - month: {}".format(month))
-        self.driver.find_element(By.XPATH, f"//div[contains(text(),'{month}')]").click()
-
-    @allure.step("Setting end date - day: '{1}'")
-    def set_end_day(self, day):
-        self.logger.info("Setting end date - day: {}".format(day))
-        days = self.driver.find_elements(By.XPATH, f"//div[contains(@class,'cell-day')][contains(.,'{day}')]")
         for day in days:
             if day.is_displayed():
                 day.click()
