@@ -18,7 +18,7 @@ class TestFlightSearch:
         search_flight.set_cabin_class("First")  # Cabin class: Economy, First, Business
         search_flight.set_loc_from("LUZ")
         search_flight.set_loc_to("OSL")
-        search_flight.set_start_date("2020", "Apr", "10")
+        search_flight.set_start_date("2019", "Dec", "14")
         search_flight.set_end_date("2020", "May", "14")
         search_flight.set_adults_number(2)
         search_flight.set_kids_number(4)

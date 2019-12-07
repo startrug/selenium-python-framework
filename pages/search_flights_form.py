@@ -1,6 +1,7 @@
 import logging
 import allure
 from allure_commons.types import AttachmentType
+from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 from locators.locators import SearchFlightsFormLocators, SearchTabsLocators
@@ -63,7 +64,6 @@ class SearchFlightsForm:
                 current_year = year.text
                 break
         if current_year != start_year:
-            print(current_year + " != " + start_year)
             self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title_start).click()
             self.driver.find_element(By.XPATH, f"//div[text()='{current_year}']").click()
             self.driver.find_element(By.XPATH, f"//div[contains(text(),'{start_year}')]").click()
@@ -73,11 +73,9 @@ class SearchFlightsForm:
         for month in months:
             if month.is_displayed():
                 current_month = month.text
-                print(current_month)
                 break
         if current_month[0:3] != start_month:
-            self.driver.find_element(By.XPATH,
-                                     f"//div[contains(@class,'cell-month')][contains(.,'{start_month}')]").click()
+            self.driver.find_element(By.XPATH, f"//div[contains(@class,'cell-month')][contains(.,'{start_month}')]").click()
         else:
             pass
         days = self.driver.find_elements(By.XPATH, f"//div[contains(@class,'cell-day')][contains(.,'{start_day}')]")
@@ -86,17 +84,14 @@ class SearchFlightsForm:
                 day.click()
                 break
 
-    # TODO
     def set_end_date(self, end_year, end_month, end_day):
-        self.logger.info(
-            f"Setting end date to {end_year}/{end_month}/{end_day}")
+        self.logger.info(f"Setting end date to {end_year}/{end_month}/{end_day}")
         years = self.driver.find_elements(By.XPATH, "//div[@class='datepicker--nav-title']//i")
         for year in years:
             if year.is_displayed():
                 current_year = year.text
                 break
         if current_year != end_year:
-            print(current_year + " != " + end_year)
             self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title_end).click()
             self.driver.find_element(By.XPATH, f"//div[text()='{current_year}']").click()
             self.driver.find_element(By.XPATH, f"//div[contains(text(),'{end_year}')]").click()
@@ -106,18 +101,9 @@ class SearchFlightsForm:
         for month in months:
             if month.is_displayed():
                 current_month = month.text
-                print(current_month)
                 break
         if current_month[0:3] != end_month:
-            header_months = self.driver.find_elements(By.XPATH,
-                                                      f"(//div[@class='datepicker--nav-title'][contains(.,'{current_month}')])")
-            for header_month in header_months:
-                if header_month.is_displayed():
-                    header_month.click()
-                    print("header month is " + header_month)
-                    break
-            self.driver.find_element(By.XPATH,
-                                     f"//div[contains(@class,'cell-month')][contains(.,'{end_month}')]").click()
+            self.driver.find_element(By.XPATH, f"//div[contains(@class,'cell-month')][contains(.,'{end_month}')]").click()
         else:
             pass
         days = self.driver.find_elements(By.XPATH, f"//div[contains(@class,'cell-day')][contains(.,'{end_day}')]")
