@@ -14,7 +14,7 @@ class TestFlightSearch:
         search_flight = SearchFlightsForm(self.driver)
         search_flight.open_page()
         search_flight.open_flights_tab()
-        search_flight.set_round_trip()
+        search_flight.set_trip_type("One Way")
         search_flight.set_cabin_class("First")  # Cabin class: Economy, First, Business
         search_flight.set_loc_from("LUZ")
         search_flight.set_loc_to("OSL")
@@ -34,8 +34,8 @@ class TestFlightSearch:
         search_flight.set_cabin_class("Economy")  # Cabin class: Economy, First, Business
         search_flight.set_loc_from("WAW")
         search_flight.set_loc_to("AUA")
-        search_flight.set_start_date("2019", "Dec", "14")
-        search_flight.set_end_date("2020", "Jun", "18")
+        search_flight.set_start_date("2020", "Nov", "27")
+        search_flight.set_end_date("2020", "Dec", "30")
         search_flight.set_adults_number(1)
         search_flight.set_kids_number(0)
         search_flight.set_infants_number(0)
