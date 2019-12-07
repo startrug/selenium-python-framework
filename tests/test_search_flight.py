@@ -19,7 +19,6 @@ class TestFlightSearch:
         search_flight.set_loc_from("LUZ")
         search_flight.set_loc_to("OSL")
         search_flight.set_start_date("2019", "Dec", "14")
-        search_flight.set_end_date("2020", "May", "14")
         search_flight.set_adults_number(2)
         search_flight.set_kids_number(4)
         search_flight.set_infants_number(1)
@@ -35,12 +34,8 @@ class TestFlightSearch:
         search_flight.set_cabin_class("Economy")  # Cabin class: Economy, First, Business
         search_flight.set_loc_from("WAW")
         search_flight.set_loc_to("AUA")
-        search_flight.set_start_year("2019", "2020")
-        search_flight.set_start_month("Dec")  # month: Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
-        search_flight.set_start_day("15")
-        search_flight.set_end_year("2020")
-        search_flight.set_end_month("Jan")
-        search_flight.set_end_day("30")
+        search_flight.set_start_date("2019", "Dec", "14")
+        search_flight.set_end_date("2020", "Jun", "18")
         search_flight.set_adults_number(1)
         search_flight.set_kids_number(0)
         search_flight.set_infants_number(0)
