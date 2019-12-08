@@ -27,6 +27,16 @@ class SearchFlightsForm:
         self.logger.info(f"Selecting trip type to: '{trip_type}'")
         self.driver.find_element(By.XPATH, f"//label[text()='{trip_type}']").click()
 
+    @allure.step("Selecting one way trip")
+    def set_one_way(self):
+        self.logger.info("Selecting one way trip")
+        self.driver.find_element(*SearchFlightsFormLocators.one_way_radio).click()
+
+    @allure.step("Selecting round trip")
+    def set_round_trip(self):
+        self.logger.info("Selecting round trip")
+        self.driver.find_element(*SearchFlightsFormLocators.round_trip_radio).click()
+
     @allure.step("Setting cabin class")
     def set_cabin_class(self, cabin_class):
         self.logger.info("Setting cabin class")
