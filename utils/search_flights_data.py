@@ -1,9 +1,8 @@
 class SearchFlightsData:
 
-    def __init__(self, cabin_class, trip_type, location_from, location_to, start_year, start_month, start_day,
+    def __init__(self, cabin_class, location_from, location_to, start_year, start_month, start_day,
                  end_year, end_month, end_day, adults_num, kids_num, infants_num):
         self.cabin_class = cabin_class
-        self.trip_type = trip_type
         self.location_from = location_from
         self.location_to = location_to
         self.start_year = start_year

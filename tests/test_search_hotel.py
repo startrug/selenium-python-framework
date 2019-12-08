@@ -11,7 +11,7 @@ class TestHotelSearch:
 
     @allure.title("Search hotel test")
     @allure.description("This is test of searching hotel in Warsaw")
-    def test_search_hote_1(self):
+    def test_search_hotel_1(self):
         search_hotel = SearchHotelsForm(self.driver)
         search_hotel.open_page()
         search_hotel.set_destination("Warsaw")
