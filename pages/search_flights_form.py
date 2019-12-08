@@ -45,22 +45,21 @@ class SearchFlightsForm:
 
     @allure.step("Setting location from: '{1}'")
     def set_loc_from(self, loc_from):
-        self.logger.info("Setting location from: {}".format(loc_from))
+        self.logger.info(f"Setting location from: {loc_from}")
         self.driver.find_element(*SearchFlightsFormLocators.loc_from_inactive).click()
         self.driver.find_element(*SearchFlightsFormLocators.loc_input_active).send_keys(loc_from)
         self.driver.find_element(By.XPATH, f"//div[@class='select2-result-label'][contains(.,'({loc_from})')]").click()
 
     @allure.step("Setting location to: '{1}'")
     def set_loc_to(self, loc_to):
-        self.logger.info("Setting location to: {}".format(loc_to))
+        self.logger.info(f"Setting location to: {loc_to}")
         self.driver.find_element(*SearchFlightsFormLocators.loc_to_inactive).click()
         self.driver.find_element(*SearchFlightsFormLocators.loc_input_active).send_keys(loc_to)
         self.driver.find_element(By.XPATH, f"//div[@class='select2-result-label'][contains(.,'({loc_to})')]").click()
 
     @allure.step("Setting start date to '{1}'/'{2}'/'{3}'")
     def set_start_date(self, start_year, start_month, start_day):
-        self.logger.info(
-            f"Setting start date to {start_year}/{start_month}/{start_day}")
+        self.logger.info(f"Setting start date to {start_year}/{start_month}/{start_day}")
         self.driver.find_element(*SearchFlightsFormLocators.flight_date_start).click()
         years = self.driver.find_elements(By.XPATH, "//div[@class='datepicker--nav-title']//i")
         for year in years:
@@ -117,56 +116,56 @@ class SearchFlightsForm:
                 break
 
     @allure.step("Setting number of adults to '{1}'")
-    def set_adults_number(self, num):
-        self.logger.info("Setting number of adults: {adults}".format(adults=num))
+    def set_adults_number(self, adults_num):
+        self.logger.info(f"Setting number of adults: {adults_num}")
         adults_input = self.driver.find_element(*SearchFlightsFormLocators.adults_input_value)
         adults_input_val = int(adults_input.get_attribute("value"))
         add_btn = self.driver.find_element(*SearchFlightsFormLocators.adults_add)
         subtract_btn = self.driver.find_element(*SearchFlightsFormLocators.adults_sub)
-        if num < adults_input_val:
-            while adults_input_val > num:
+        if adults_num < adults_input_val:
+            while adults_input_val > adults_num:
                 subtract_btn.click()
                 adults_input_val -= 1
-        elif num == adults_input_val:
+        elif adults_num == adults_input_val:
             pass
         else:
-            while adults_input_val < num:
+            while adults_input_val < adults_num:
                 add_btn.click()
                 adults_input_val += 1
 
     @allure.step("Setting number of adults to '{1}'")
-    def set_kids_number(self, num):
-        self.logger.info("Setting number of kids: {kids}".format(kids=num))
+    def set_kids_number(self, kids_num):
+        self.logger.info(f"Setting number of kids: {kids_num}")
         kids_input = self.driver.find_element(*SearchFlightsFormLocators.kids_input_value)
         kids_input_val = int(kids_input.get_attribute("value"))
         add_btn = self.driver.find_element(*SearchFlightsFormLocators.kids_add)
         subtract_btn = self.driver.find_element(*SearchFlightsFormLocators.kids_sub)
-        if num < kids_input_val:
-            while kids_input_val > num:
+        if kids_num < kids_input_val:
+            while kids_input_val > kids_num:
                 subtract_btn.click()
                 kids_input_val -= 1
-        elif num == kids_input_val:
+        elif kids_num == kids_input_val:
             pass
         else:
-            while kids_input_val < num:
+            while kids_input_val < kids_num:
                 add_btn.click()
                 kids_input_val += 1
 
     @allure.step("Setting number of infants to '{1}'")
-    def set_infants_number(self, num):
-        self.logger.info("Setting number of infants: {infants}".format(infants=num))
+    def set_infants_number(self, infants_num):
+        self.logger.info(f"Setting number of infants: {infants_num}")
         infants_input = self.driver.find_element(*SearchFlightsFormLocators.infants_input_value)
         infants_input_val = int(infants_input.get_attribute("value"))
         add_btn = self.driver.find_element(*SearchFlightsFormLocators.infants_add)
         subtract_btn = self.driver.find_element(*SearchFlightsFormLocators.infants_sub)
-        if num < infants_input_val:
-            while infants_input_val > num:
+        if infants_num < infants_input_val:
+            while infants_input_val > infants_num:
                 subtract_btn.click()
                 infants_input_val -= 1
-        elif num == infants_input_val:
+        elif infants_num == infants_input_val:
             pass
         else:
-            while infants_input_val < num:
+            while infants_input_val < infants_num:
                 add_btn.click()
                 infants_input_val += 1
 

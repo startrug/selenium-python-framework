@@ -18,7 +18,7 @@ class TestFlightSearch:
         search_flight.set_cabin_class("First")  # Cabin class: Economy, First, Business
         search_flight.set_loc_from("LIS")
         search_flight.set_loc_to("JFK")
-        search_flight.set_start_date("2019", "Dec", "31")
+        search_flight.set_start_date("2020", "Jan", "8")
         search_flight.set_adults_number(2)
         search_flight.set_kids_number(4)
         search_flight.set_infants_number(1)
