@@ -78,10 +78,12 @@ class SearchFlightsForm:
                 current_month = month.text
                 break
         if current_month[0:3] != start_month:
-            self.driver.find_element(By.XPATH, f"//div[contains(@class,'cell-month')][contains(.,'{start_month}')]").click()
+            self.driver.find_element(By.XPATH, f"//div[contains(@class,'cell-month')]"
+                                               f"[contains(.,'{start_month}')]").click()
         else:
             pass
-        days = self.driver.find_elements(By.XPATH, f"//div[contains(@class,'cell-day')][contains(.,'{start_day}')]")
+        days = self.driver.find_elements(By.XPATH, f"//div[contains(@class,'cell-day')]"
+                                                   f"[text()='{start_day}']")
         for day in days:
             if day.is_displayed():
                 day.click()
@@ -106,10 +108,16 @@ class SearchFlightsForm:
                 current_month = month.text
                 break
         if current_month[0:3] != end_month:
-            self.driver.find_element(By.XPATH, f"//div[contains(text(),'{end_month}')]").click()
+            self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title_end).click()
+            months = self.driver.find_elements(By.XPATH, f"//div[contains(text(),'{end_month}')]")
+            for month in months:
+                if month.is_displayed():
+                    month.click()
+                    break
         else:
             pass
-        days = self.driver.find_elements(By.XPATH, f"//div[contains(@class,'cell-day')][contains(.,'{end_day}')]")
+        days = self.driver.find_elements(By.XPATH, f"//div[contains(@class,'cell-day')]"
+                                                   f"[text()='{end_day}']")
         for day in days:
             if day.is_displayed():
                 day.click()
