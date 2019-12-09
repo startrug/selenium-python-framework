@@ -90,9 +90,6 @@ class SearchFlightsForm:
             if day.is_displayed():
                 day.click()
                 break
-        start_date = self.driver.find_element(*SearchFlightsFormLocators.flight_date_start)
-        start_date_val = start_date.get_attribute("value")
-        print("Start date is: " + start_date_val)
 
     def set_end_date(self, end_year, end_month, end_day):
         self.logger.info(f"Setting end date to {end_year}/{end_month}/{end_day}")
@@ -116,7 +113,6 @@ class SearchFlightsForm:
             pass
         if current_month[0:3] != end_month and current_year == end_year:
             self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title_end).click()
-            print("metoda 1")
             months = self.driver.find_elements(By.XPATH, f"//div[contains(text(),'{end_month}')]")
             for month in months:
                 if month.is_displayed():
@@ -125,7 +121,6 @@ class SearchFlightsForm:
         else:
             pass
         if current_month[0:3] != end_month and current_year != end_year:
-            print("metoda 1")
             months = self.driver.find_elements(By.XPATH, f"//div[contains(text(),'{end_month}')]")
             for month in months:
                 if month.is_displayed():
@@ -139,9 +134,6 @@ class SearchFlightsForm:
             if day.is_displayed():
                 day.click()
                 break
-        end_date = self.driver.find_element(*SearchFlightsFormLocators.flight_date_end)
-        end_date_val = end_date.get_attribute("value")
-        print("End date is: ", end_date_val)
 
     @allure.step("Setting number of adults to '{1}'")
     def set_adults_number(self, adults_num):
@@ -202,3 +194,16 @@ class SearchFlightsForm:
         self.logger.info("Performing search")
         self.driver.find_element(*SearchFlightsFormLocators.search_btn).click()
         allure.attach(self.driver.get_screenshot_as_png(), name="search_results", attachment_type=AttachmentType.PNG)
+
+    @allure.step("Getting input start date")
+    def get_start_date(self):
+        start_date = self.driver.find_element(*SearchFlightsFormLocators.flight_date_start)
+        start_date_val = start_date.get_attribute("value")
+        print("Selected start date is: ", start_date_val)
+
+    @allure.step("Getting input end date")
+    def get_end_date(self):
+        end_date = self.driver.find_element(*SearchFlightsFormLocators.flight_date_end)
+        end_date_val = end_date.get_attribute("value")
+        print("Selected end date is: ", end_date_val)
+

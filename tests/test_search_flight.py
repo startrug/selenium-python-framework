@@ -58,4 +58,6 @@ class TestFlightSearch:
         search_flight.set_adults_number(data.adults_num)
         search_flight.set_kids_number(data.kids_num)
         search_flight.set_infants_number(data.infants_num)
+        search_flight.get_start_date()
+        search_flight.get_end_date()
         search_flight.search_perform()
