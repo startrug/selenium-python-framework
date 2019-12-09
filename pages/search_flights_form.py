@@ -61,6 +61,7 @@ class SearchFlightsForm:
     def set_start_date(self, start_year, start_month, start_day):
         self.logger.info(f"Setting start date to {start_year}/{start_month}/{start_day}")
         self.driver.find_element(*SearchFlightsFormLocators.flight_date_start).click()
+        current_year = ""
         years = self.driver.find_elements(By.XPATH, "//div[@class='datepicker--nav-title']//i")
         for year in years:
             if year.is_displayed():
@@ -72,6 +73,7 @@ class SearchFlightsForm:
             self.driver.find_element(By.XPATH, f"//div[contains(text(),'{start_year}')]").click()
         else:
             pass
+        current_month = ""
         months = self.driver.find_elements(By.XPATH, "//div[@class='datepicker--nav-title']")
         for month in months:
             if month.is_displayed():
@@ -88,27 +90,42 @@ class SearchFlightsForm:
             if day.is_displayed():
                 day.click()
                 break
+        start_date = self.driver.find_element(*SearchFlightsFormLocators.flight_date_start)
+        start_date_val = start_date.get_attribute("value")
+        print("Start date is: " + start_date_val)
 
     def set_end_date(self, end_year, end_month, end_day):
         self.logger.info(f"Setting end date to {end_year}/{end_month}/{end_day}")
+        current_year = ""
+        current_month = ""
         years = self.driver.find_elements(By.XPATH, "//div[@class='datepicker--nav-title']//i")
+        months = self.driver.find_elements(By.XPATH, "//div[@class='datepicker--nav-title']")
         for year in years:
             if year.is_displayed():
                 current_year = year.text
                 break
-        if current_year != end_year:
+        for month in months:
+            if month.is_displayed():
+                current_month = month.text
+                break
+        if end_year != current_year:
             self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title_end).click()
             self.driver.find_element(By.XPATH, f"//div[text()='{current_year}']").click()
             self.driver.find_element(By.XPATH, f"//div[contains(text(),'{end_year}')]").click()
         else:
             pass
-        months = self.driver.find_elements(By.XPATH, "//div[@class='datepicker--nav-title']")
-        for month in months:
-            if month.is_displayed():
-                current_month = month.text
-                break
-        if current_month[0:3] != end_month:
+        if current_month[0:3] != end_month and current_year == end_year:
             self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title_end).click()
+            print("metoda 1")
+            months = self.driver.find_elements(By.XPATH, f"//div[contains(text(),'{end_month}')]")
+            for month in months:
+                if month.is_displayed():
+                    month.click()
+                    break
+        else:
+            pass
+        if current_month[0:3] != end_month and current_year != end_year:
+            print("metoda 1")
             months = self.driver.find_elements(By.XPATH, f"//div[contains(text(),'{end_month}')]")
             for month in months:
                 if month.is_displayed():
@@ -122,6 +139,9 @@ class SearchFlightsForm:
             if day.is_displayed():
                 day.click()
                 break
+        end_date = self.driver.find_element(*SearchFlightsFormLocators.flight_date_end)
+        end_date_val = end_date.get_attribute("value")
+        print("End date is: ", end_date_val)
 
     @allure.step("Setting number of adults to '{1}'")
     def set_adults_number(self, adults_num):
