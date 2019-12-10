@@ -60,8 +60,9 @@ class SearchFlightsForm:
     @allure.step("Setting start date to '{1}'/'{2}'/'{3}'")
     def set_start_date(self, start_year, start_month, start_day):
         self.logger.info(f"Setting start date to {start_year}/{start_month}/{start_day}")
-        self.driver.find_element(*SearchFlightsFormLocators.flight_date_start).click()
         current_year = ""
+        current_month = ""
+        self.driver.find_element(*SearchFlightsFormLocators.flight_date_start).click()
         years = self.driver.find_elements(By.XPATH, "//div[@class='datepicker--nav-title']//i")
         for year in years:
             if year.is_displayed():
@@ -73,7 +74,6 @@ class SearchFlightsForm:
             self.driver.find_element(By.XPATH, f"//div[contains(text(),'{start_year}')]").click()
         else:
             pass
-        current_month = ""
         months = self.driver.find_elements(By.XPATH, "//div[@class='datepicker--nav-title']")
         for month in months:
             if month.is_displayed():
@@ -91,6 +91,7 @@ class SearchFlightsForm:
                 day.click()
                 break
 
+    @allure.step("Setting end date to '{1}'/'{2}'/'{3}'")
     def set_end_date(self, end_year, end_month, end_day):
         self.logger.info(f"Setting end date to {end_year}/{end_month}/{end_day}")
         current_year = ""
@@ -199,11 +200,10 @@ class SearchFlightsForm:
     def get_start_date(self):
         start_date = self.driver.find_element(*SearchFlightsFormLocators.flight_date_start)
         start_date_val = start_date.get_attribute("value")
-        print("Selected start date is: ", start_date_val)
+        self.logger.info("Selected start date is: ", start_date_val)
 
     @allure.step("Getting input end date")
     def get_end_date(self):
         end_date = self.driver.find_element(*SearchFlightsFormLocators.flight_date_end)
         end_date_val = end_date.get_attribute("value")
-        print("Selected end date is: ", end_date_val)
-
+        self.logger.info("Selected start date is: ", end_date_val)
