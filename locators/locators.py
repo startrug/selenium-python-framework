@@ -78,6 +78,8 @@ class SearchFlightsFormLocators:
     flight_date_end = (By.CSS_SELECTOR, "#FlightsDateEnd")
     datepicker_nav_title_start = (By.XPATH, "//div[7]//nav[1]//div[2]")
     datepicker_nav_title_end = (By.XPATH, "//div[8]//nav[1]//div[2]")
+    datepicker_nav_title_years = (By.XPATH, "//div[@class='datepicker--nav-title']//i")
+    datepicker_nav_title_months = (By.XPATH, "//div[@class='datepicker--nav-title']")
     adults_input_value = (By.XPATH, "//input[@name='fadults']")
     adults_add = (By.XPATH, "(//button[@class='btn btn-white bootstrap-touchspin-up '])[3]")
     adults_sub = (By.XPATH, "(//button[@class='btn btn-white bootstrap-touchspin-down '])[3]")

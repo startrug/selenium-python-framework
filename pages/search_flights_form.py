@@ -63,7 +63,7 @@ class SearchFlightsForm:
         current_year = ""
         current_month = ""
         self.driver.find_element(*SearchFlightsFormLocators.flight_date_start).click()
-        years = self.driver.find_elements(By.XPATH, "//div[@class='datepicker--nav-title']//i")
+        years = self.driver.find_elements(*SearchFlightsFormLocators.datepicker_nav_title_years)
         for year in years:
             if year.is_displayed():
                 current_year = year.text
@@ -74,7 +74,7 @@ class SearchFlightsForm:
             self.driver.find_element(By.XPATH, f"//div[contains(text(),'{start_year}')]").click()
         else:
             pass
-        months = self.driver.find_elements(By.XPATH, "//div[@class='datepicker--nav-title']")
+        months = self.driver.find_elements(*SearchFlightsFormLocators.datepicker_nav_title_months)
         for month in months:
             if month.is_displayed():
                 current_month = month.text
@@ -96,8 +96,8 @@ class SearchFlightsForm:
         self.logger.info(f"Setting end date to {end_year}/{end_month}/{end_day}")
         current_year = ""
         current_month = ""
-        years = self.driver.find_elements(By.XPATH, "//div[@class='datepicker--nav-title']//i")
-        months = self.driver.find_elements(By.XPATH, "//div[@class='datepicker--nav-title']")
+        years = self.driver.find_elements(*SearchFlightsFormLocators.datepicker_nav_title_years)
+        months = self.driver.find_elements(*SearchFlightsFormLocators.datepicker_nav_title_months)
         for year in years:
             if year.is_displayed():
                 current_year = year.text
