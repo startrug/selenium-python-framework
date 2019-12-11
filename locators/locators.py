@@ -92,6 +92,17 @@ class SearchFlightsFormLocators:
     search_btn = (By.XPATH, "//div[@class='col-xs-12 col-md-1']//button[@class='btn-primary btn btn-block']")
 
 
+class SearchToursFormLocators:
+    tour_destination_inactive = (By.XPATH, "//div[@id='s2id_autogen8']")
+    tour_destination_active = (By.XPATH, "//input[@class='select2-input select2-focused']")
+    tour_type_select = (By.CSS_SELECTOR, "#tourtype")
+    tour_date = (By.CSS_SELECTOR, "#DateTours")
+    adults_input_value = (By.XPATH, "//input[@name='adults']")
+    adults_add = (By.XPATH, "(//button[@class='btn btn-white bootstrap-touchspin-up '])[6]")
+    adults_sub = (By.XPATH, "(//button[@class='btn btn-white bootstrap-touchspin-down '])[6]")
+    search_btn = (By.XPATH, "//div[@class='col-md-2 col-xs-12']//button[@type='submit']")
+
+
 class SearchTabsLocators:
     hotels_tab = (By.XPATH, "//a[@data-name='hotels']")
     flights_tab = (By.XPATH, "//a[@data-name='flights']")
