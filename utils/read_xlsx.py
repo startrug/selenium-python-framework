@@ -13,11 +13,11 @@ class XlsxReader:
         data = []
 
         for i in range(1, sheet.nrows):
-            search_hotels_data = SearchHotelsData(sheet.cell(i, 0).value,
-                                                  sheet.cell(i, 1).value,
-                                                  sheet.cell(i, 2).value,
-                                                  int(sheet.cell(i, 3).value),
-                                                  int(sheet.cell(i, 4).value))
+            search_hotels_data = SearchHotelsData(sheet.cell(i, 0).value,  # destination
+                                                  sheet.cell(i, 1).value,  # check in date
+                                                  sheet.cell(i, 2).value,  # check out date
+                                                  int(sheet.cell(i, 3).value),  # adults number
+                                                  int(sheet.cell(i, 4).value))  # kids number
             data.append(search_hotels_data)
         return data
 
@@ -50,11 +50,11 @@ class XlsxReader:
         data = []
 
         for i in range(1, sheet.nrows):
-            search_tours_data = SearchToursData(sheet.cell(i, 0).value,
-                                                sheet.cell(i, 1).value,
-                                                sheet.cell(i, 2).value,
-                                                sheet.cell(i, 3).value,
-                                                sheet.cell(i, 4).value,
-                                                int(sheet.cell(i, 5).value))
+            search_tours_data = SearchToursData(sheet.cell(i, 0).value,  # destination
+                                                sheet.cell(i, 1).value,  # tour type
+                                                sheet.cell(i, 2).value,  # start year
+                                                sheet.cell(i, 3).value,  # start month
+                                                sheet.cell(i, 4).value,  # start day
+                                                int(sheet.cell(i, 5).value))  #adults number
             data.append(search_tours_data)
         return data
