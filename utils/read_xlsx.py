@@ -2,6 +2,7 @@ import xlrd
 
 from utils.search_flights_data import SearchFlightsData
 from utils.search_hotels_data import SearchHotelsData
+from utils.search_tours_data import SearchToursData
 
 
 class XlsxReader:
@@ -40,4 +41,20 @@ class XlsxReader:
                                                     int(sheet.cell(i, 10).value),  # kids number
                                                     int(sheet.cell(i, 11).value))  # infants number
             data.append(search_flights_data)
+        return data
+
+    @staticmethod
+    def get_xlsx_tours_data():
+        wb = xlrd.open_workbook(f"../utils/search_tours_input_data.xlsx")
+        sheet = wb.sheet_by_index(0)
+        data = []
+
+        for i in range(1, sheet.nrows):
+            search_tours_data = SearchToursData(sheet.cell(i, 0).value,
+                                                sheet.cell(i, 1).value,
+                                                sheet.cell(i, 2).value,
+                                                sheet.cell(i, 3).value,
+                                                sheet.cell(i, 4).value,
+                                                int(sheet.cell(i, 5).value))
+            data.append(search_tours_data)
         return data
