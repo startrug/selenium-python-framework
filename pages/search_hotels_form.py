@@ -2,6 +2,7 @@ import logging
 import allure
 from allure_commons.types import AttachmentType
 from locators.locators import SearchHotelsFormLocators
+from utils.functions import set_travellers_number
 
 
 class SearchHotelsForm:
@@ -31,40 +32,16 @@ class SearchHotelsForm:
         self.driver.find_element(*SearchHotelsFormLocators.checkout_input).send_keys(check_out)
 
     @allure.step("Setting number of adults to '{1}'")
-    def set_adults_number(self, num):
-        self.logger.info("Setting number of adults: {adults}".format(adults=num))
-        adults_input = self.driver.find_element(*SearchHotelsFormLocators.adults_input_value)
-        adults_input_val = int(adults_input.get_attribute("value"))
-        add_btn = self.driver.find_element(*SearchHotelsFormLocators.adults_add)
-        subtract_btn = self.driver.find_element(*SearchHotelsFormLocators.adults_sub)
-        if num < adults_input_val:
-            while adults_input_val > num:
-                subtract_btn.click()
-                adults_input_val -= 1
-        elif num == adults_input_val:
-            pass
-        else:
-            while adults_input_val < num:
-                add_btn.click()
-                adults_input_val += 1
+    def set_adults_number(self, adults_num):
+        self.logger.info(f"Setting number of adults: {adults_num}")
+        set_travellers_number(self.driver, adults_num, SearchHotelsFormLocators,
+                              ["adults_input_value", "adults_add", "adults_sub"])
 
     @allure.step("Setting number of adults to '{1}'")
-    def set_kids_number(self, num):
-        self.logger.info("Setting number of kids: {kids}".format(kids=num))
-        kids_input = self.driver.find_element(*SearchHotelsFormLocators.kids_input_value)
-        kids_input_val = int(kids_input.get_attribute("value"))
-        add_btn = self.driver.find_element(*SearchHotelsFormLocators.kids_add)
-        subtract_btn = self.driver.find_element(*SearchHotelsFormLocators.kids_sub)
-        if num < kids_input_val:
-            while kids_input_val > num:
-                subtract_btn.click()
-                kids_input_val -= 1
-        elif num == kids_input_val:
-            pass
-        else:
-            while kids_input_val < num:
-                add_btn.click()
-                kids_input_val += 1
+    def set_kids_number(self, kids_num):
+        self.logger.info(f"Setting number of kids: {kids_num}")
+        set_travellers_number(self.driver, kids_num, SearchHotelsFormLocators,
+                              ["kids_input_value", "kids_add", "kids_sub"])
 
     @allure.step("Performing search")
     def search_perform(self):
