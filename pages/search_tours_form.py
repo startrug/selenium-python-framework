@@ -5,6 +5,7 @@ from allure_commons.types import AttachmentType
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from locators.locators import SearchTabsLocators, SearchToursFormLocators
+from utils.functions import set_travellers_number
 
 
 class SearchToursForm:
@@ -76,20 +77,8 @@ class SearchToursForm:
     @allure.step("Setting number of adults to '{1}'")
     def set_adults_number(self, adults_num):
         self.logger.info(f"Setting number of adults: {adults_num}")
-        adults_input = self.driver.find_element(*SearchToursFormLocators.adults_input_value)
-        adults_input_val = int(adults_input.get_attribute("value"))
-        add_btn = self.driver.find_element(*SearchToursFormLocators.adults_add)
-        subtract_btn = self.driver.find_element(*SearchToursFormLocators.adults_sub)
-        if adults_num < adults_input_val:
-            while adults_input_val > adults_num:
-                subtract_btn.click()
-                adults_input_val -= 1
-        elif adults_num == adults_input_val:
-            pass
-        else:
-            while adults_input_val < adults_num:
-                add_btn.click()
-                adults_input_val += 1
+        set_travellers_number(self.driver, adults_num, SearchToursFormLocators,
+                              ["adults_input_value", "adults_add", "adults_sub"])
 
     @allure.step("Performing search")
     def search_perform(self):

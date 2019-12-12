@@ -101,7 +101,7 @@ class SearchToursFormLocators:
     datepicker_nav_title_start = (By.XPATH, "//div[6]//nav[1]//div[2]")
     datepicker_nav_title_years = (By.XPATH, "//div[@class='datepicker--nav-title']//i")
     datepicker_nav_title_months = (By.XPATH, "//div[@class='datepicker--nav-title']")
-    adults_input_value = (By.XPATH, "//input[@name='adults']")
+    adults_input_value = (By.XPATH, "//div[@class='col-md-12']//input[@name='adults']")
     adults_add = (By.XPATH, "(//button[@class='btn btn-white bootstrap-touchspin-up '])[6]")
     adults_sub = (By.XPATH, "(//button[@class='btn btn-white bootstrap-touchspin-down '])[6]")
     search_btn = (By.XPATH, "//div[@class='col-md-2 col-xs-12']//button[@type='submit']")
