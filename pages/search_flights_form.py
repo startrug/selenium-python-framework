@@ -3,8 +3,7 @@ import allure
 from allure_commons.types import AttachmentType
 from selenium.webdriver.common.by import By
 from locators.locators import SearchFlightsFormLocators, SearchTabsLocators
-from utils.functions import set_travellers_number
-from utils.functions import get_datestamp, click_displayed_timestamp
+from utils.functions import set_travellers_number, get_datestamp, click_displayed_timestamp
 
 
 class SearchFlightsForm:
