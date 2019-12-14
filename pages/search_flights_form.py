@@ -3,7 +3,7 @@ import allure
 from allure_commons.types import AttachmentType
 from selenium.webdriver.common.by import By
 from locators.locators import SearchFlightsFormLocators, SearchTabsLocators
-from utils.functions import set_travellers_number, get_datestamp, click_displayed_timestamp
+from utils.functions import set_travellers_number, get_datestamp, click_displayed_datestamp
 
 
 class SearchFlightsForm:
@@ -72,7 +72,7 @@ class SearchFlightsForm:
                                                f"[contains(.,'{start_month}')]").click()
         days = self.driver.find_elements(By.XPATH, f"//div[contains(@class,'cell-day')]"
                                                    f"[text()='{start_day}']")
-        click_displayed_timestamp(days)
+        click_displayed_datestamp(days)
 
     @allure.step("Setting end date to '{1}'/'{2}'/'{3}'")
     def set_end_date(self, end_year, end_month, end_day):
@@ -86,13 +86,13 @@ class SearchFlightsForm:
         if current_month[0:3] != end_month and current_year == end_year:
             self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title_end).click()
             months = self.driver.find_elements(By.XPATH, f"//div[contains(text(),'{end_month}')]")
-            click_displayed_timestamp(months)
+            click_displayed_datestamp(months)
         if current_month[0:3] != end_month and current_year != end_year:
             months = self.driver.find_elements(By.XPATH, f"//div[contains(text(),'{end_month}')]")
-            click_displayed_timestamp(months)
+            click_displayed_datestamp(months)
         days = self.driver.find_elements(By.XPATH, f"//div[contains(@class,'cell-day')]"
                                                    f"[text()='{end_day}']")
-        click_displayed_timestamp(days)
+        click_displayed_datestamp(days)
 
     @allure.step("Setting number of adults to '{1}'")
     def set_adults_number(self, adults_num):

@@ -5,7 +5,7 @@ from allure_commons.types import AttachmentType
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from locators.locators import SearchTabsLocators, SearchToursFormLocators
-from utils.functions import set_travellers_number, get_datestamp, click_displayed_timestamp
+from utils.functions import set_travellers_number, get_datestamp, click_displayed_datestamp
 
 
 class SearchToursForm:
@@ -53,7 +53,7 @@ class SearchToursForm:
                                                f"[contains(.,'{start_month}')]").click()
         days = self.driver.find_elements(By.XPATH, f"//div[contains(@class,'cell-day')]"
                                                    f"[text()='{start_day}']")
-        click_displayed_timestamp(days)
+        click_displayed_datestamp(days)
 
     @allure.step("Setting number of adults to '{1}'")
     def set_adults_number(self, adults_num):

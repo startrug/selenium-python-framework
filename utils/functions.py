@@ -23,8 +23,8 @@ def get_datestamp(driver, form_loc, params: list):
             return current_datestamp
 
 
-def click_displayed_timestamp(timestamps):
-    for timestamp in timestamps:
-        if timestamp.is_displayed():
-            timestamp.click()
+def click_displayed_datestamp(datestamps):
+    for datestamp in datestamps:
+        if datestamp.is_displayed():
+            datestamp.click()
             break
