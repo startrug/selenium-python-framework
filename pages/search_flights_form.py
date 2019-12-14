@@ -4,7 +4,7 @@ from allure_commons.types import AttachmentType
 from selenium.webdriver.common.by import By
 from locators.locators import SearchFlightsFormLocators, SearchTabsLocators
 from utils.functions import set_travellers_number
-from utils.functions import get_datestamp, set_day
+from utils.functions import get_datestamp, click_displayed_timestamp
 
 
 class SearchFlightsForm:
@@ -62,63 +62,38 @@ class SearchFlightsForm:
     def set_start_date(self, start_year, start_month, start_day):
         self.logger.info(f"Setting start date to {start_year}/{start_month}/{start_day}")
         self.driver.find_element(*SearchFlightsFormLocators.flight_date_start).click()
-        current_datestamp = get_datestamp(self.driver, SearchFlightsFormLocators, ["datepicker_nav_title_years"])
-        if current_datestamp != start_year:
+        current_year = get_datestamp(self.driver, SearchFlightsFormLocators, ["datepicker_nav_title_years"])
+        if current_year != start_year:
             self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title_start).click()
-            self.driver.find_element(By.XPATH, f"//div[text()='{current_datestamp}']").click()
+            self.driver.find_element(By.XPATH, f"//div[text()='{current_year}']").click()
             self.driver.find_element(By.XPATH, f"//div[contains(text(),'{start_year}')]").click()
-        current_datestamp = get_datestamp(self.driver, SearchFlightsFormLocators, ["datepicker_nav_title_months"])
-        if current_datestamp[0:3] != start_month:
+        current_month = get_datestamp(self.driver, SearchFlightsFormLocators, ["datepicker_nav_title_months"])
+        if current_month[0:3] != start_month:
             self.driver.find_element(By.XPATH, f"//div[contains(@class,'cell-month')]"
                                                f"[contains(.,'{start_month}')]").click()
         days = self.driver.find_elements(By.XPATH, f"//div[contains(@class,'cell-day')]"
                                                    f"[text()='{start_day}']")
-        set_day(days)
+        click_displayed_timestamp(days)
 
     @allure.step("Setting end date to '{1}'/'{2}'/'{3}'")
     def set_end_date(self, end_year, end_month, end_day):
         self.logger.info(f"Setting end date to {end_year}/{end_month}/{end_day}")
-        current_year = ""
-        current_month = ""
-        years = self.driver.find_elements(*SearchFlightsFormLocators.datepicker_nav_title_years)
-        months = self.driver.find_elements(*SearchFlightsFormLocators.datepicker_nav_title_months)
-        for year in years:
-            if year.is_displayed():
-                current_year = year.text
-                break
-        for month in months:
-            if month.is_displayed():
-                current_month = month.text
-                break
-        if end_year != current_year:
+        current_year = get_datestamp(self.driver, SearchFlightsFormLocators, ["datepicker_nav_title_years"])
+        if current_year != end_year:
             self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title_end).click()
             self.driver.find_element(By.XPATH, f"//div[text()='{current_year}']").click()
             self.driver.find_element(By.XPATH, f"//div[contains(text(),'{end_year}')]").click()
-        else:
-            pass
+        current_month = get_datestamp(self.driver, SearchFlightsFormLocators, ["datepicker_nav_title_months"])
         if current_month[0:3] != end_month and current_year == end_year:
             self.driver.find_element(*SearchFlightsFormLocators.datepicker_nav_title_end).click()
             months = self.driver.find_elements(By.XPATH, f"//div[contains(text(),'{end_month}')]")
-            for month in months:
-                if month.is_displayed():
-                    month.click()
-                    break
-        else:
-            pass
+            click_displayed_timestamp(months)
         if current_month[0:3] != end_month and current_year != end_year:
             months = self.driver.find_elements(By.XPATH, f"//div[contains(text(),'{end_month}')]")
-            for month in months:
-                if month.is_displayed():
-                    month.click()
-                    break
-        else:
-            pass
+            click_displayed_timestamp(months)
         days = self.driver.find_elements(By.XPATH, f"//div[contains(@class,'cell-day')]"
                                                    f"[text()='{end_day}']")
-        for day in days:
-            if day.is_displayed():
-                day.click()
-                break
+        click_displayed_timestamp(days)
 
     @allure.step("Setting number of adults to '{1}'")
     def set_adults_number(self, adults_num):
