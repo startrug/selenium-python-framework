@@ -107,6 +107,16 @@ class SearchToursFormLocators:
     search_btn = (By.XPATH, "//div[@class='col-md-2 col-xs-12']//button[@type='submit']")
 
 
+class SearchTransferLocators:
+    pick_up_loc = (By.XPATH, "//span[contains(text(),'Location')]")
+    drop_off_loc = (By.CSS_SELECTOR, "#carlocations2")
+    depart_date = (By.CSS_SELECTOR, "#dropdate")
+    depart_time = (By.XPATH, "//div[@class='chosen-container chosen-container-single chosen-container-active']"
+                             "//span[contains(text(),'Time')]")
+    return_date = (By.CSS_SELECTOR, "#returndate")
+    return_time = (By.XPATH, "//select[@name='dropoffTime']")
+
+
 class SearchTabsLocators:
     hotels_tab = (By.XPATH, "//a[@data-name='hotels']")
     flights_tab = (By.XPATH, "//a[@data-name='flights']")
