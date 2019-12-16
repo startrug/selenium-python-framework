@@ -1,0 +1,28 @@
+import pytest
+import allure
+
+from pages.search_transfers_form import SearchTransfersForm
+from utils.read_xlsx import XlsxReader
+
+
+@pytest.mark.usefixtures("setup")
+class TestTransferSearch:
+
+    @allure.title("Search transfers test")
+    @allure.description("This is test of searching transfers")
+    def test_search_transfer_general(self):
+        search_transfer = SearchTransfersForm(self.driver)
+        search_transfer.open_page()
+        search_transfer.open_transfer_tab()
+        search_transfer.set_pick_up_loc("Manchester")
+        search_transfer.set_drop_off_loc("Petra")
+        search_transfer.set_depart_date("2019", "Dec", "29")
+        search_transfer.set_return_date("2020", "Jan", "8")
+        search_transfer.search_perform()
+
+    @allure.title("Search transfer test")
+    @allure.description("This is test of searching transfer")
+    @pytest.mark.parametrize("data", XlsxReader.get_xlsx_tours_data())
+    def test_search_transfer_data_driven(self, data):
+        search_transfer = SearchTransfersForm(self.driver)
+        search_transfer.open_page()
