@@ -56,9 +56,16 @@ class SearchTransfersForm:
                                                    f"[text()='{start_day}']")
         click_displayed_datestamp(days)
 
+    @allure.step("Setting depart time to '{depart_time}'")
+    def set_depart_time(self, depart_time):
+        self.logger.info(f"Setting depart time to {depart_time}")
+        self.driver.find_element(*SearchTransferLocators.depart_time_selector).click()
+        self.driver.find_element(*SearchTransferLocators.depart_time_imput).send_keys(depart_time, Keys.ENTER)
+
     @allure.step("Setting return date to '{1}'/'{2}'/'{3}'")
     def set_return_date(self, end_year, end_month, end_day):
         self.logger.info(f"Setting return date to {end_year}/{end_month}/{end_day}")
+        self.driver.find_element(*SearchTransferLocators.return_date).click()
         current_year = get_datestamp(self.driver, SearchTransferLocators, ["datepicker_nav_title_years"])
         if current_year != end_year:
             self.driver.find_element(*SearchTransferLocators.datepicker_nav_title_end).click()
@@ -75,6 +82,12 @@ class SearchTransfersForm:
         days = self.driver.find_elements(By.XPATH, f"//div[contains(@class,'cell-day')]"
                                                    f"[text()='{end_day}']")
         click_displayed_datestamp(days)
+
+    @allure.step("Setting return time to '{return_time}'")
+    def set_return_time(self, return_time):
+        self.logger.info(f"Setting return time to {return_time}")
+        self.driver.find_element(*SearchTransferLocators.return_time_selector).click()
+        self.driver.find_element(*SearchTransferLocators.return_time_input).send_keys(return_time, Keys.ENTER)
 
     @allure.step("Performing search")
     def search_perform(self):

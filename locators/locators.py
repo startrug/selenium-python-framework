@@ -111,14 +111,17 @@ class SearchTransferLocators:
     pick_up_loc = (By.XPATH, "//span[contains(text(),'Location')]")
     drop_off_loc = (By.CSS_SELECTOR, "#carlocations2")
     depart_date = (By.CSS_SELECTOR, "#dropdate")
-    depart_time = (By.XPATH, "//div[@class='chosen-container chosen-container-single chosen-container-active']"
-                             "//span[contains(text(),'Time')]")
     return_date = (By.CSS_SELECTOR, "#returndate")
-    return_time = (By.XPATH, "//select[@name='dropoffTime']")
     datepicker_nav_title_start = (By.XPATH, "//div[@id='datepickers-container']//div[3]//nav[1]//div[2]")
     datepicker_nav_title_end = (By.XPATH, "//div[4]//nav[1]//div[2]")
     datepicker_nav_title_years = (By.XPATH, "//div[@class='datepicker--nav-title']//i")
     datepicker_nav_title_months = (By.XPATH, "//div[@class='datepicker--nav-title']")
+    depart_time_selector = (By.XPATH, "//div[@id='transfer']"
+                                      "//div[3]//div[1]//div[1]//div[2]//div[1]//div[2]//div[1]//a[1]")
+    depart_time_imput = (By.XPATH, "(//input[@class='chosen-search-input'])[4]")
+    return_time_selector = (By.XPATH, "//div[@id='transfer']//div[4]"
+                                      "//div[1]//div[1]//div[2]//div[1]//div[2]//div[1]//a[1]//span[1]")
+    return_time_input = (By.XPATH, "(//input[@class='chosen-search-input'])[5]")
     search_btn = (By.XPATH, "//div[@class='col-md-2 col-xs-12']//button[@class='btn-primary btn btn-block']")
 
 
