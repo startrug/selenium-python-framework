@@ -18,14 +18,14 @@ class SearchHotelsForm:
 
     @allure.step("Setting destination to '{1}'")
     def set_destination(self, destination):
-        self.logger.info("Setting destination: {}".format(destination))
+        self.logger.info(f"Setting destination: {destination}")
         self.driver.find_element(*SearchHotelsFormLocators.destination_inactive).click()
         self.driver.find_element(*SearchHotelsFormLocators.destination_input).send_keys(destination)
         self.driver.find_element(*SearchHotelsFormLocators.search_match).click()
 
     @allure.step("Setting date range from '{1}' to '{2}'")
     def set_date_range(self, check_in, check_out):
-        self.logger.info("Setting date range from {checkin} to {checkout}".format(checkin=check_in, checkout=check_out))
+        self.logger.info(f"Setting date range from {check_in} to {check_out}")
         self.driver.find_element(*SearchHotelsFormLocators.checkin_input).click()
         self.driver.find_element(*SearchHotelsFormLocators.checkin_input).send_keys(check_in)
         self.driver.find_element(*SearchHotelsFormLocators.checkout_input).click()
