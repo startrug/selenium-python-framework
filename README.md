@@ -42,7 +42,9 @@ To generate all tests report using Allure you need run tests by command first:
 $ pytest --alluredir=<reports directory path>
 ```
 After that you need use command:
+```
 $ allure serve <reports directory path>
+```
 
 ## License
 
