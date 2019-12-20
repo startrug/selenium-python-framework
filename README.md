@@ -45,7 +45,7 @@ After that you need use command:
 ```
 $ allure serve <reports directory path>
 ```
-
+![Allure report screenshot](https://raw.githubusercontent.com/startrug/phptravels-selenium-py/screenshots/allure_report.png "Allure report screenshot")
 ## License
 
 TODO
