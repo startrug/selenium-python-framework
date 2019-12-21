@@ -1,6 +1,6 @@
 # Test Automation Project
 
-This is my first test automation project based on Selenium-Webdriver with Python. It's still developing package of automated tests of https://phptravels.net demo website.
+This is my first test automation project based on Selenium-Webdriver with Python. It's still developing package of automated tests of [phptravels.net](https://phptravels.net) demo website.
 The collection of tests contains:
 - user login tests (correct / incorrect login and password)
 - hotels search tests
@@ -14,7 +14,7 @@ You can find here short description of main directories and it's content
 - [pages](pages) - there're are sets of method for each test step (notice: some repeated methods were moved to [functions.py](utils/functions.py))
 - [tests](tests) - there're are sets of tests for main functionalities of website
 - [reports](reports) - if you run tests with Allure, tests reports will be saved in this directory
-- [utils](utils) - tihis directory contain files responsible for configuration, e.g. driver_factory.py for webdriver management or read_xlsx.py for reading input data from xlsx files included in project
+- [utils](utils) - tihis directory contain files responsible for configuration, e.g. driver_factory.py for webdriver management or [read_xlsx.py](utils/read_xlsx.py) for reading input data from xlsx files included in project
 
 ## Project Features
 - framework follows page object pattern
@@ -27,7 +27,7 @@ You can find here short description of main directories and it's content
         self.driver.find_element(*SearchHotelsFormLocators.destination_inactive).click()
 ```
 ![Logs screenshot](https://raw.githubusercontent.com/startrug/phptravels-selenium-py/screenshots/logger.png "Logs screenshot")
-- the ability to easily generate legible and attractive test reports using Allure (for more look "Generate Test Report" paragraph below)
+- the ability to easily generate legible and attractive test reports using Allure (for more look [Generate Test Report](README.md#generate-test-report) section below)
 - tests can be run on popular browsers - Chrome and Firefox are preconfigured in DriverFactory class and both can be select in [conftest.py](tests/conftest.py), e.g.
 ```
 @pytest.fixture()
@@ -47,7 +47,10 @@ $ pip install -r requirements.txt
 
 ## Run Automated Tests
 
-To run selected test without Allure report you need to set pytest as deafult test runner in Pycharm first (File > Settings > Tools > Python Integrated Tools > Testing).
+To run selected test without Allure report you need to set pytest as deafult test runner in Pycharm first
+```
+File > Settings > Tools > Python Integrated Tools > Testing
+```
 After that you need just choose one of the tests from "tests" directory and click "Run test" green arrow. There're 2 versions of test in each test file. In general test cases you can easily modify test inputs. Data-driven tests base on xlsx files from [utils](utils) directory. 
 
 ## Generate Test Report
@@ -62,6 +65,5 @@ $ allure serve <reports directory path>
 ```
 ![Allure report screenshot](https://raw.githubusercontent.com/startrug/phptravels-selenium-py/screenshots/allure_report.png "Allure report screenshot")
 
-## Comments
-If you have any comments or suggestions, leave its here. It will be very helpful for me :)
-Thanks in advance!
+Report is generated in Chrome browser.
+
