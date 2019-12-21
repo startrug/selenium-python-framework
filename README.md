@@ -18,6 +18,7 @@ The collection of tests contains:
         self.logger.info(f"Setting destination: {destination}")
         self.driver.find_element(*SearchHotelsFormLocators.destination_inactive).click()
 ```
+![Logs screenshot](https://raw.githubusercontent.com/startrug/phptravels-selenium-py/screenshots/logger.png "Logs screenshot")
 - the ability to easily generate legible and attractive test reports using Allure (for more look "Generate Test Report" paragraph below)
 - ...
 
