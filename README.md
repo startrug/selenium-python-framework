@@ -9,12 +9,12 @@ The collection of tests contains:
 - transfers search tests
 
 ## Project Structure
-You can find here short description of main directories and it's content
-- [locators](locators) - there're locators of web elements in locators.py grouped in classes
-- [pages](pages) - there're are sets of method for each test step (notice: some repeated methods were moved to [functions.py](utils/functions.py))
-- [tests](tests) - there're are sets of tests for main functionalities of website
+Here you can find a short description of main directories and it's content
+- [locators](locators) - there are locators of web elements in locators.py grouped in classes
+- [pages](pages) - there are sets of method for each test step (notice: some repeated methods were moved to [functions.py](utils/functions.py))
+- [tests](tests) - there are sets of tests for main functionalities of website
 - [reports](reports) - if you run tests with Allure, tests reports will be saved in this directory
-- [utils](utils) - tihis directory contain files responsible for configuration, e.g. driver_factory.py for webdriver management or [read_xlsx.py](utils/read_xlsx.py) for reading input data from xlsx files included in project
+- [utils](utils) - this directory contains files responsible for configuration, e.g. driver_factory.py for webdriver management or [read_xlsx.py](utils/read_xlsx.py) for reading input data from xlsx files included in project
 
 ## Project Features
 - framework follows page object pattern
