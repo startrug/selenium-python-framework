@@ -47,19 +47,19 @@ $ pip install -r requirements.txt
 
 ## Run Automated Tests
 
-To run selected test without Allure report you need to set pytest as deafult test runner in Pycharm first
+To run selected test without Allure report you need to set pytest as default test runner in Pycharm first
 ```
 File > Settings > Tools > Python Integrated Tools > Testing
 ```
-After that you need just choose one of the tests from "tests" directory and click "Run test" green arrow. There're 2 versions of test in each test file. In general test cases you can easily modify test inputs. Data-driven tests base on xlsx files from [utils](utils) directory. 
+After that you just need to choose one of the tests from "tests" directory and click "Run test" green arrow. There are 2 versions of test in each test file. In general test cases you can easily modify test inputs. Data-driven tests base on xlsx files from [utils](utils) directory. 
 
 ## Generate Test Report
 
-To generate all tests report using Allure you need run tests by command first:
+To generate all tests report using Allure you need to run tests by command first:
 ```
 $ pytest --alluredir=<reports directory path>
 ```
-After that you need use command:
+After that you need to use command:
 ```
 $ allure serve <reports directory path>
 ```
