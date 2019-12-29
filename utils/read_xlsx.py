@@ -9,7 +9,7 @@ from utils.search_transfers_data import SearchTransfersData
 class XlsxReader:
     @staticmethod
     def get_xlsx_hotels_data():
-        wb = xlrd.open_workbook(f"../utils/search_hotels_input_data.xlsx")
+        wb = xlrd.open_workbook(f"./utils/search_hotels_input_data.xlsx")
         sheet = wb.sheet_by_index(0)
         data = []
 
@@ -24,7 +24,7 @@ class XlsxReader:
 
     @staticmethod
     def get_xlsx_flights_data():
-        wb = xlrd.open_workbook(f"../utils/search_flights_input_data.xlsx")
+        wb = xlrd.open_workbook(f"./utils/search_flights_input_data.xlsx")
         sheet = wb.sheet_by_index(0)
         data = []
 
@@ -46,7 +46,7 @@ class XlsxReader:
 
     @staticmethod
     def get_xlsx_tours_data():
-        wb = xlrd.open_workbook(f"../utils/search_tours_input_data.xlsx")
+        wb = xlrd.open_workbook(f"./utils/search_tours_input_data.xlsx")
         sheet = wb.sheet_by_index(0)
         data = []
 
@@ -62,7 +62,7 @@ class XlsxReader:
 
     @staticmethod
     def get_xlsx_transfers_data():
-        wb = xlrd.open_workbook(f"../utils/search_transfers_input_data.xlsx")
+        wb = xlrd.open_workbook(f"./utils/search_transfers_input_data.xlsx")
         sheet = wb.sheet_by_index(0)
         data = []
 

@@ -128,7 +128,7 @@ class SearchTabsLocators:
     hotels_tab = (By.XPATH, "//a[@data-name='hotels']")
     flights_tab = (By.XPATH, "//a[@data-name='flights']")
     tours_tab = (By.XPATH, "//a[@data-name='tours']")
-    transfer_tab = (By.XPATH, "//a[@data-name='transfer']")
+    transfer_tab = (By.XPATH, "//a[@data-name='cars']")
     visa_tab = (By.XPATH, "//a[@data-name='visa']")
 
 
