@@ -1,3 +1,11 @@
+![Last commit](https://img.shields.io/github/last-commit/startrug/selenium-python-framework?color=9cf&logo=git)
+![GitHub top language](https://img.shields.io/github/languages/top/startrug/selenium-python-framework?color=blue)
+
+# :warning: Important notice
+I would like to inform everyone who is interested in this project that I decided to go back to working on it.
+I am planning to implement some major changes like separating framework from tests, adding sample tests for another website than phptravels.com and removing tests implemented before.
+Thank you guys for forking and giving stars for this project. I appreciate it a lot!
+
 # Test Automation Project
 
 This is my first test automation project based on Selenium-Webdriver with Python. It's still developing package of automated tests of [phptravels.net](https://phptravels.net) demo website.
