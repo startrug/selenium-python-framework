@@ -21,14 +21,11 @@ class WebDriverListener(AbstractEventListener):
     def after_navigate_to(self, url, driver):
         self.logger.info(f"Navigated to {url}")
 
-    # def find_element_by_css_selector(self, css_selector):
-    #     self.logger.info(f"Find element by CSS selector {css_selector}")
+    def before_find(self, by, value, driver):
+        self.logger.info(f"Finding element by {by} {value}")
 
-    def find_element_by_link_text(self, link_text):
-        self.logger.info(f"Find element by link text: {link_text}")
-
-    def find_element(self, by, value):
-        self.logger.info(f"Find element by {by} selector {value}")
+    def after_find(self,by, value, driver):
+        self.logger.info(f"Element by {by} {value} found")
 
     def before_click(self, element, driver):
         self.logger.info(f"Clicking on {element.get_attribute('text')}")
