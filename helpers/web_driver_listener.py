@@ -4,7 +4,8 @@ from selenium.webdriver.support.events import AbstractEventListener
 
 log_filename = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 logging.basicConfig(
-    filename=rf"C:\Users\DELL\Code\selenium_logs\{log_filename}.log",
+    # log file will be created in "tests" directory. Feel free to change the path or filename
+    filename=f"{log_filename}.log",
     format="%(asctime)s: %(levelname)s: %(message)s",
     level=logging.INFO
 )
