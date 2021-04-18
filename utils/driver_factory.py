@@ -7,7 +7,7 @@ from helpers.web_driver_listener import WebDriverListener
 
 class DriverFactory:
     @staticmethod
-    def get_driver(browser) -> WebDriverListener:
+    def get_driver(browser) -> EventFiringWebDriver:
         if browser == "chrome":
             options = webdriver.ChromeOptions()
             options.add_argument("start-maximized")
@@ -19,6 +19,9 @@ class DriverFactory:
         elif browser == "firefox":
             options = webdriver.FirefoxOptions()
             options.add_argument("start-maximized")
-            driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=options)
-            return WebDriverListener(driver)
+            driver = EventFiringWebDriver(
+                webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=options),
+                WebDriverListener()
+            )
+            return driver
         raise Exception("Provide valid driver name")

@@ -1,5 +1,3 @@
-import logging
-import pytest
 import allure
 from allure_commons.types import AttachmentType
 from selenium.webdriver.common.by import By
@@ -14,34 +12,28 @@ class SearchTransfersForm:
 
     def __init__(self, driver):
         self.driver = driver
-        self.logger = logging.getLogger(__name__)
 
     @allure.step("Opening phptravels.net website")
     def open_page(self):
-        self.logger.info("Opening phptravels.net website")
         self.driver.get("http://www.phptravels.net/")
 
     @allure.step("Opening Transfer tab")
     def open_transfer_tab(self):
-        self.logger.info("Opening Transfer tab")
         self.driver.find_element(*SearchTabsLocators.transfer_tab).click()
 
     @allure.step("Setting pick up location: '{1}'")
     def set_pick_up_loc(self, pick_up_loc):
-        self.logger.info(f"Setting pick up location to: {pick_up_loc}")
         self.driver.find_element(*SearchTransferLocators.pick_up_loc).click()
         self.driver.find_element(By.XPATH, f"//li[contains(text(),'{pick_up_loc}')]").click()
 
     @allure.step("Setting drop off location: '{1}'")
     def set_drop_off_loc(self, drop_off_loc):
-        self.logger.info(f"Setting drop off location to: {drop_off_loc}")
         self.driver.find_element(*SearchTransferLocators.drop_off_loc).click()
         loc_select = Select(self.driver.find_element(*SearchTransferLocators.drop_off_loc))
         loc_select.select_by_visible_text(drop_off_loc)
 
     @allure.step("Setting depart date to '{1}'/'{2}'/'{3}'")
     def set_depart_date(self, start_year, start_month, start_day):
-        self.logger.info(f"Setting depart date to {start_year}/{start_month}/{start_day}")
         self.driver.find_element(*SearchTransferLocators.depart_date).click()
         current_year = get_datestamp(self.driver, SearchTransferLocators, ["datepicker_nav_title_years"])
         if current_year != start_year:
@@ -58,13 +50,11 @@ class SearchTransfersForm:
 
     @allure.step("Setting depart time to '{depart_time}'")
     def set_depart_time(self, depart_time):
-        self.logger.info(f"Setting depart time to {depart_time}")
         self.driver.find_element(*SearchTransferLocators.depart_time_selector).click()
         self.driver.find_element(*SearchTransferLocators.depart_time_imput).send_keys(depart_time, Keys.ENTER)
 
     @allure.step("Setting return date to '{1}'/'{2}'/'{3}'")
     def set_return_date(self, end_year, end_month, end_day):
-        self.logger.info(f"Setting return date to {end_year}/{end_month}/{end_day}")
         self.driver.find_element(*SearchTransferLocators.return_date).click()
         current_year = get_datestamp(self.driver, SearchTransferLocators, ["datepicker_nav_title_years"])
         if current_year != end_year:
@@ -85,12 +75,10 @@ class SearchTransfersForm:
 
     @allure.step("Setting return time to '{return_time}'")
     def set_return_time(self, return_time):
-        self.logger.info(f"Setting return time to {return_time}")
         self.driver.find_element(*SearchTransferLocators.return_time_selector).click()
         self.driver.find_element(*SearchTransferLocators.return_time_input).send_keys(return_time, Keys.ENTER)
 
     @allure.step("Performing search")
     def search_perform(self):
-        self.logger.info("Performing search")
         self.driver.find_element(*SearchTransferLocators.search_btn).click()
         allure.attach(self.driver.get_screenshot_as_png(), name="search_results", attachment_type=AttachmentType.PNG)
