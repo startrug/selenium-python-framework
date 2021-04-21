@@ -1,0 +1,6 @@
+{
+  "browser": "firefox",
+  "headless_mode": true,
+  "tested_page": "http://www.phptravels.net/",
+  "timeout": 10
+}

@@ -1,15 +1,12 @@
 import allure
 from selenium.webdriver.common.keys import Keys
 from locators.locators import LogInLocators
+from pages.base_page import BasePage
 
 
-class LogInPage:
+class LogInPage(BasePage):
     def __init__(self, driver):
-        self.driver = driver
-
-    @allure.step("Opening phptravels.net website")
-    def open_page(self):
-        self.driver.get("http://www.phptravels.net/")
+        super().__init__(driver)
 
     @allure.step("Expanding account menu")
     def expand_account_menu(self):

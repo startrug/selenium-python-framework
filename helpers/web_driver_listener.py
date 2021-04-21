@@ -14,7 +14,6 @@ logging.basicConfig(
 class WebDriverListener(AbstractEventListener):
     def __init__(self):
         self.logger = logging.getLogger("selenium")
-        self.logger.setLevel(logging.INFO)
 
     def before_navigate_to(self, url, driver):
         self.logger.info(f"Navigating to {url}")
@@ -25,7 +24,7 @@ class WebDriverListener(AbstractEventListener):
     def before_find(self, by, value, driver):
         self.logger.info(f"Searching for element by {by} {value}")
 
-    def after_find(self,by, value, driver):
+    def after_find(self, by, value, driver):
         self.logger.info(f"Element by {by} {value} found")
 
     def before_click(self, element, driver):
