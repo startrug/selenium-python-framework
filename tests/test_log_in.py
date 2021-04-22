@@ -4,14 +4,14 @@ from locators.locators import UserAccountLocators, LogInLocators
 from pages.login_page import LogInPage
 
 
-@pytest.mark.usefixtures("setup", "website_setup")
+@pytest.mark.usefixtures("setup")
 class TestLogIn:
 
     @allure.title("Login with valid data test")
     @allure.description("This is test of login with valid data")
-    def test_login_passed(self, config):
+    def test_login_passed(self):
         log_in_page = LogInPage(self.driver)
-        log_in_page.open_home_page(config)
+        log_in_page.open()
         log_in_page.expand_account_menu()
         log_in_page.open_login_page()
         log_in_page.set_user_inputs("user@phptravels.com", "demouser")
@@ -22,9 +22,9 @@ class TestLogIn:
 
     @allure.title("Login with invalid email test")
     @allure.description("This is test of login with invalid email")
-    def test_login_failed(self, config):
+    def test_login_failed(self,):
         log_in_page = LogInPage(self.driver)
-        log_in_page.open_home_page(config)
+        log_in_page.open()
         log_in_page.expand_account_menu()
         log_in_page.open_login_page()
         log_in_page.set_user_inputs("admin@phptravels.com", "demouser")
