@@ -21,7 +21,7 @@ requests==2.22.0
 selenium==3.141.0
 six==1.13.0
 toml==0.10.2
-urllib3==1.25.6
+urllib3==1.26.5
 wcwidth==0.1.7
 webdriver-manager==3.4.0
 xlrd==1.2.0
