@@ -1,6 +1,6 @@
 {
   "browser": "chrome",
   "headless_mode": false,
-  "base_url": "http://www.phptravels.net/",
+  "base_url": "http://www.demoblaze.com/",
   "timeout": 10
 }

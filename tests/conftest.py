@@ -6,7 +6,7 @@ from allure_commons.types import AttachmentType
 
 from utils.driver_factory import DriverFactory
 
-CONFIG_PATH = "../config.json"
+CONFIG_PATH = "config.json"
 DEFAULT_WAIT_TIME = 10
 SUPPORTED_BROWSERS = ["chrome", "firefox", "edge"]
 DEFAULT_URL = "http://www.google.com/"
@@ -47,5 +47,6 @@ def setup(request, config):
         driver.maximize_window()
     yield
     if request.session.testsfailed != before_failed:
-        allure.attach(driver.get_screenshot_as_png(), name="Test failed", attachment_type=AttachmentType.PNG)
+        allure.attach(driver.get_screenshot_as_png(),
+                      name="Test failed", attachment_type=AttachmentType.PNG)
     driver.quit()
