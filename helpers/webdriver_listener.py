@@ -2,16 +2,16 @@ import logging
 import datetime
 from selenium.webdriver.support.events import AbstractEventListener
 
-log_filename = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-logging.basicConfig(
-    # log file will be created in "tests" directory. Feel free to change the path or filename
-    filename=f"{log_filename}.log",
-    format="%(asctime)s: %(levelname)s: %(message)s",
-    level=logging.INFO
-)
-
 
 class WebDriverListener(AbstractEventListener):
+    log_filename = datetime.datetime.now().strftime("%Y%m%d")
+    logging.basicConfig(
+        # log file will be created in "tests" directory. Feel free to change the path or filename
+        filename=f"{log_filename}.log",
+        format="%(asctime)s: %(levelname)s: %(message)s",
+        level=logging.INFO
+    )
+
     def __init__(self):
         self.logger = logging.getLogger("selenium")
 
@@ -19,7 +19,7 @@ class WebDriverListener(AbstractEventListener):
         self.logger.info(f"Navigating to {url}")
 
     def after_navigate_to(self, url, driver):
-        self.logger.info(f"Navigated to {url}")
+        self.logger.info(f"{url} opened")
 
     def before_find(self, by, value, driver):
         self.logger.info(f"Searching for element by {by} {value}")

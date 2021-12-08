@@ -1,43 +1,43 @@
 from selenium import webdriver
-from selenium.webdriver.support.event_firing_webdriver import EventFiringWebDriver
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
-from helpers.web_driver_listener import WebDriverListener
+from helpers.webdriver_listener import WebDriverListener
 from msedge.selenium_tools import EdgeOptions, Edge
+from extensions.webdriver_extended import WebDriverExtended
 
 
 class DriverFactory:
     @staticmethod
-    def get_driver(browser, headless_mode=False) -> EventFiringWebDriver:
-        if browser == "chrome":
+    def get_driver(config) -> WebDriverExtended:
+        if config["browser"] == "chrome":
             options = webdriver.ChromeOptions()
             options.add_argument("start-maximized")
-            if headless_mode is True:
+            if config["headless_mode"] is True:
                 options.add_argument("--headless")
-            driver = EventFiringWebDriver(
+            driver = WebDriverExtended(
                 webdriver.Chrome(ChromeDriverManager().install(), options=options),
-                WebDriverListener()
+                WebDriverListener(), config
             )
             return driver
-        elif browser == "firefox":
+        elif config["browser"] == "firefox":
             options = webdriver.FirefoxOptions()
-            if headless_mode is True:
+            if config["headless_mode"] is True:
                 options.headless = True
-            driver = EventFiringWebDriver(
+            driver = WebDriverExtended(
                 webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=options),
-                WebDriverListener()
+                WebDriverListener(), config
             )
             return driver
-        elif browser == "edge":
+        elif config["browser"] == "edge":
             options = EdgeOptions()
             options.use_chromium = True
-            if headless_mode is True:
+            if config["headless_mode"] is True:
                 options.headless = True
             driver_path = EdgeChromiumDriverManager().install()
-            driver = EventFiringWebDriver(
+            driver = WebDriverExtended(
                 Edge(executable_path=driver_path, options=options),
-                WebDriverListener()
+                WebDriverListener(), config
             )
             return driver
         raise Exception("Provide valid driver name")
