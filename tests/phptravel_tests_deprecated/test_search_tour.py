@@ -1,7 +1,7 @@
 import pytest
 import allure
 
-from pages.search_tours_form import SearchToursForm
+from pages.phptravels.search_tours_form import SearchToursForm
 from utils.read_xlsx import XlsxReader
 
 

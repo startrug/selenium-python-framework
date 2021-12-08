@@ -1,7 +1,7 @@
 import pytest
 import allure
 
-from pages.search_flights_form import SearchFlightsForm
+from pages.phptravels.search_flights_form import SearchFlightsForm
 from utils.read_xlsx import XlsxReader
 
 
@@ -14,8 +14,10 @@ class TestFlightSearch:
         search_flight = SearchFlightsForm(self.driver)
         search_flight.open_page()
         search_flight.open_flights_tab()
-        search_flight.set_trip_type("Round Trip")  # Trip type: One Way, Round Trip
-        search_flight.set_cabin_class("First")  # Cabin class: Economy, First, Business
+        # Trip type: One Way, Round Trip
+        search_flight.set_trip_type("Round Trip")
+        # Cabin class: Economy, First, Business
+        search_flight.set_cabin_class("First")
         search_flight.set_loc_from("LUZ")
         search_flight.set_loc_to("OSL")
         search_flight.set_start_date("2019", "Dec", "25")
@@ -36,7 +38,8 @@ class TestFlightSearch:
         search_flight.set_cabin_class(data.cabin_class)
         search_flight.set_loc_from(data.location_from)
         search_flight.set_loc_to(data.location_to)
-        search_flight.set_start_date(data.start_year, data.start_month, data.start_day)
+        search_flight.set_start_date(
+            data.start_year, data.start_month, data.start_day)
         search_flight.set_adults_number(data.adults_num)
         search_flight.set_kids_number(data.kids_num)
         search_flight.set_infants_number(data.infants_num)
@@ -53,7 +56,8 @@ class TestFlightSearch:
         search_flight.set_cabin_class(data.cabin_class)
         search_flight.set_loc_from(data.location_from)
         search_flight.set_loc_to(data.location_to)
-        search_flight.set_start_date(data.start_year, data.start_month, data.start_day)
+        search_flight.set_start_date(
+            data.start_year, data.start_month, data.start_day)
         search_flight.set_end_date(data.end_year, data.end_month, data.end_day)
         search_flight.set_adults_number(data.adults_num)
         search_flight.set_kids_number(data.kids_num)

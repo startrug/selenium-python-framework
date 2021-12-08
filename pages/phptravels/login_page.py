@@ -1,10 +1,10 @@
 import allure
 from selenium.webdriver.common.keys import Keys
 from locators.locators import LogInLocators
-from pages.base_page import BasePage
+from base.page_base import PageBase
 
 
-class LogInPage(BasePage):
+class LogInPage(PageBase):
     def __init__(self, driver):
         super().__init__(driver)
 
@@ -21,7 +21,8 @@ class LogInPage(BasePage):
         self.driver.find_element(*LogInLocators.email_input).click()
         self.driver.find_element(*LogInLocators.email_input).send_keys(email)
         self.driver.find_element(*LogInLocators.password_input).click()
-        self.driver.find_element(*LogInLocators.password_input).send_keys(password, Keys.ENTER)
+        self.driver.find_element(
+            *LogInLocators.password_input).send_keys(password, Keys.ENTER)
 
     @allure.step("Logout")
     def logout(self):

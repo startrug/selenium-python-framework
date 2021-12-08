@@ -2,13 +2,12 @@ import pytest
 import allure
 
 from locators.locators import SearchResultsLocators
-from pages.search_hotels_form import SearchHotelsForm
+from pages.phptravels.search_hotels_form import SearchHotelsForm
 from utils.read_xlsx import XlsxReader
 
 
 @pytest.mark.usefixtures("setup")
 class TestHotelSearch:
-
     @allure.title("Search hotel test")
     @allure.description("This is test of searching hotel in Warsaw")
     def test_search_hotel_1(self):
@@ -21,7 +20,8 @@ class TestHotelSearch:
         search_hotel.search_perform()
 
         results_title = "Warsaw"
-        assert results_title in self.driver.find_element(*SearchResultsLocators.search_title).text
+        assert results_title in self.driver.find_element(
+            *SearchResultsLocators.search_title).text
 
     @allure.title("Search hotel test 2")
     @allure.description("This is data driven test of searching hotels")
@@ -36,4 +36,5 @@ class TestHotelSearch:
         search_hotel.search_perform()
 
         results_title = data.destination
-        assert results_title in self.driver.find_element(*SearchResultsLocators.search_title).text
+        assert results_title in self.driver.find_element(
+            *SearchResultsLocators.search_title).text

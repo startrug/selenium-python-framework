@@ -1,7 +1,7 @@
 import pytest
 import allure
 from locators.locators import UserAccountLocators, LogInLocators
-from pages.login_page import LogInPage
+from pages.phptravels.login_page import LogInPage
 
 
 @pytest.mark.usefixtures("setup")
@@ -23,7 +23,7 @@ class TestLogIn:
 
     @allure.title("Login with invalid email test")
     @allure.description("This is test of login with invalid email")
-    def test_login_failed(self,):
+    def test_login_failed(self):
         log_in_page = LogInPage(self.driver)
         log_in_page.open()
         log_in_page.expand_account_menu()
