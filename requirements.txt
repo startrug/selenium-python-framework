@@ -2,7 +2,7 @@ allure-pytest==2.8.6
 allure-python-commons==2.8.6
 atomicwrites==1.3.0
 attrs==19.3.0
-certifi==2020.12.5
+certifi==2022.12.7
 chardet==3.0.4
 colorama==0.4.1
 configparser==4.0.2
